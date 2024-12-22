@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public bool _isPlayerStopMovement = true;
     private Vector3 initialHandPosition;
     private Vector3 lastHandPosition;
+    
+    [SerializeField] private Vector3 playerLastPosition;
+    [SerializeField] private Quaternion playerLastRotation;
 
     private void Awake()
     {
@@ -62,11 +65,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        HandleLook();
+        HandleHandSwing();
         if (_isPlayerStopMovement)
         {
             HandleMovement();
-            HandleLook();
-            HandleHandSwing();
         }
     }
 
@@ -166,5 +169,23 @@ public class PlayerController : MonoBehaviour
         {
             _isJumping = true;
         }
+    }
+
+    public void SitOnChair(Vector3 playerPosition, Quaternion playerRotation)
+    {
+        _isPlayerStopMovement = false;
+        playerLastPosition = playerPosition;
+        playerLastRotation = playerRotation;
+
+        transform.position = playerPosition;
+        transform.rotation = playerRotation;
+    }
+
+    public void GetUpFromChair()
+    {
+        transform.position = playerLastPosition;
+        transform.rotation = playerLastRotation;
+
+        _isPlayerStopMovement = true;
     }
 }
