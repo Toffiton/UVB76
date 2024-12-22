@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 using UnityEngine.InputSystem;
+using Vector2 = System.Numerics.Vector2;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float walkSwingSpeed = 4f;
     [SerializeField] float runSwingSpeed = 8f;
 
-    private Control _controls;
+    private Controls _controls;
     private CharacterController _characterController;
     private float _verticalSpeed;
     private float _gravity = 9.8f;
@@ -37,15 +39,15 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _controls = new Control();
+        _controls = new Controls();
         _characterController = GetComponent<CharacterController>();
         initialHandPosition = hands.localPosition;
     }
 
     private void OnEnable()
     {
-        _controls.Player.Enable();
-        _controls.Player.Jump.performed += OnJump;
+        _controls.Main.Enable();
+        _controls.Main.Jump.performed += OnJump;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        _controls.Player.Disable();
+        _controls.Main.Disable();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -70,9 +72,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector2 moveInput = _controls.Player.Move.ReadValue<Vector2>();
-        float horizontalMove = moveInput.x;
-        float verticalMove = moveInput.y;
+        float horizontalMove = _controls.Main.MoveHorizontal.ReadValue<float>();
+        float verticalMove = _controls.Main.MoveVerticle.ReadValue<float>();
     
         Vector3 move = transform.right * horizontalMove + transform.forward * verticalMove;
 
