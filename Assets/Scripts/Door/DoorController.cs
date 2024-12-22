@@ -2,15 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(BoxCollider))]
 public class DoorController : MonoBehaviour
 {
     [SerializeField] private Transform doorHinge;
+    [SerializeField] private TakedItem takedItem;
     [SerializeField] private float openAngle = 90f;
     [SerializeField] private float speed = 2f;
 
     private bool isDoorOpen = false;
-    private bool playerInRange = false;
 
     private Controls controls;
 
@@ -31,25 +30,9 @@ public class DoorController : MonoBehaviour
         controls.Main.Interact.performed -= HandleInteract;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
-        }
-    }
-
     private void HandleInteract(InputAction.CallbackContext context)
     {
-        if (playerInRange)
+        if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
             ToggleDoor();
         }
