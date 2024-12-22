@@ -406,7 +406,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1.75
   m_Center: {x: -0.52694654, y: -0.90949404, z: 0.028384993}
 --- !u!1 &81560312
 GameObject:
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 736599278}
-  maxDistance: 1
+  maxDistance: 15
   highlightLayer:
     serializedVersion: 2
     m_Bits: 8
