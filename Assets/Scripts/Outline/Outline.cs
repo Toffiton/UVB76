@@ -141,15 +141,6 @@ public class Outline : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-        Debug.Log("LateUpdate");
-        if (!isOutlineVisible)
-        {
-            HideOutline();
-        }
-    }
-
     void Update()
     {
         if (needsUpdate)
@@ -344,13 +335,11 @@ public class Outline : MonoBehaviour
 
     public void ShowOutline()
     {
-        Debug.Log("ShowOutline");
         SetOutlineVisibility(true);
     }
 
     public void HideOutline()
     {
-        Debug.Log("HideOutline");
         SetOutlineVisibility(false);
     }
 
