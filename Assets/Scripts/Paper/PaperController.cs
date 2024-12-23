@@ -4,9 +4,10 @@ using Vector2 = System.Numerics.Vector2;
 
 public class PaperController : MonoBehaviour
 {
+    [SerializeField] private MainGame mainGame;
     [SerializeField] private TakedItem takedItem;
     [SerializeField] private GameObject defaultHand;
-    [SerializeField] private GameObject paper;
+    [SerializeField] private GameObject handWithPaper;
 
     private Vector3 paperPosition;
     private Quaternion paperRotation;
@@ -42,8 +43,10 @@ public class PaperController : MonoBehaviour
     {
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
+            mainGame.isTakedItem = true;
             isTaked = true;
-            paper.SetActive(true);
+            defaultHand.SetActive(false);
+            handWithPaper.SetActive(true);
         }
     }
 
@@ -51,8 +54,10 @@ public class PaperController : MonoBehaviour
     {
         if (isTaked)
         {
+            StartCoroutine(mainGame.SetIsTakedItemWithDelay(false));
             isTaked = false;
-            paper.SetActive(false);
+            handWithPaper.SetActive(false);
+            defaultHand.SetActive(true);
         }
     }
 }

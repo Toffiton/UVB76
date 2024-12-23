@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = System.Numerics.Vector2;
 
 public class ChairController : MonoBehaviour
 {
+    [SerializeField] private MainGame mainGame;
     [SerializeField] private TakedItem takedItem;
     [SerializeField] private PlayerController player;
     [SerializeField] private Vector3 playerPosition;
@@ -47,7 +47,7 @@ public class ChairController : MonoBehaviour
 
     private void GetUpFromChair(InputAction.CallbackContext obj)
     {
-        if (isSiting)
+        if (isSiting && !mainGame.isTakedItem)
         {
             player.GetUpFromChair();
             isSiting = false;
