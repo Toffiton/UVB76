@@ -139,6 +139,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LKM",
+                    "type": "Button",
+                    "id": "18926652-e017-44d6-b11b-c21cd90c2abc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PKM",
+                    "type": "Button",
+                    "id": "ba98c7f7-59b5-4142-be48-243e72f704ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -332,7 +350,7 @@
                 {
                     "name": "",
                     "id": "c006ef41-cfb6-49a1-b8e4-226a5d20ebbe",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
@@ -645,6 +663,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Breaks",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4632baba-99c8-4eb8-a313-e2e46c36cb9e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard + Mouse",
+                    "action": "LKM",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a46816c-b121-466a-bfe7-7c41d303373e",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard + Mouse",
+                    "action": "PKM",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

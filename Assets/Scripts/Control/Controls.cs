@@ -161,6 +161,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LKM"",
+                    ""type"": ""Button"",
+                    ""id"": ""18926652-e017-44d6-b11b-c21cd90c2abc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PKM"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba98c7f7-59b5-4142-be48-243e72f704ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -354,7 +372,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c006ef41-cfb6-49a1-b8e4-226a5d20ebbe"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard + Mouse"",
@@ -669,6 +687,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Breaks"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4632baba-99c8-4eb8-a313-e2e46c36cb9e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard + Mouse"",
+                    ""action"": ""LKM"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a46816c-b121-466a-bfe7-7c41d303373e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard + Mouse"",
+                    ""action"": ""PKM"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -720,6 +760,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Main_Run = m_Main.FindAction("Run", throwIfNotFound: true);
         m_Main_Jump = m_Main.FindAction("Jump", throwIfNotFound: true);
         m_Main_Breaks = m_Main.FindAction("Breaks", throwIfNotFound: true);
+        m_Main_LKM = m_Main.FindAction("LKM", throwIfNotFound: true);
+        m_Main_PKM = m_Main.FindAction("PKM", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -801,6 +843,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Run;
     private readonly InputAction m_Main_Jump;
     private readonly InputAction m_Main_Breaks;
+    private readonly InputAction m_Main_LKM;
+    private readonly InputAction m_Main_PKM;
     public struct MainActions
     {
         private @Controls m_Wrapper;
@@ -820,6 +864,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Main_Run;
         public InputAction @Jump => m_Wrapper.m_Main_Jump;
         public InputAction @Breaks => m_Wrapper.m_Main_Breaks;
+        public InputAction @LKM => m_Wrapper.m_Main_LKM;
+        public InputAction @PKM => m_Wrapper.m_Main_PKM;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -874,6 +920,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Breaks.started += instance.OnBreaks;
             @Breaks.performed += instance.OnBreaks;
             @Breaks.canceled += instance.OnBreaks;
+            @LKM.started += instance.OnLKM;
+            @LKM.performed += instance.OnLKM;
+            @LKM.canceled += instance.OnLKM;
+            @PKM.started += instance.OnPKM;
+            @PKM.performed += instance.OnPKM;
+            @PKM.canceled += instance.OnPKM;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -923,6 +975,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Breaks.started -= instance.OnBreaks;
             @Breaks.performed -= instance.OnBreaks;
             @Breaks.canceled -= instance.OnBreaks;
+            @LKM.started -= instance.OnLKM;
+            @LKM.performed -= instance.OnLKM;
+            @LKM.canceled -= instance.OnLKM;
+            @PKM.started -= instance.OnPKM;
+            @PKM.performed -= instance.OnPKM;
+            @PKM.canceled -= instance.OnPKM;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -975,5 +1033,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnBreaks(InputAction.CallbackContext context);
+        void OnLKM(InputAction.CallbackContext context);
+        void OnPKM(InputAction.CallbackContext context);
     }
 }
