@@ -10,4 +10,14 @@ public class MainGame : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         this.isTakedItem = isTakedItem;
     }
+
+    public int GetCurrentDay()
+    {
+        return PlayerPrefs.GetInt("CurrentDay", 0);
+    }
+
+    public void SetCurrentDay(int day)
+    {
+        PlayerPrefs.SetInt("CurrentDay", day);
+    }
 }

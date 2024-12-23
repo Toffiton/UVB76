@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Player/hands.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Player/hands.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Readme.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Readme.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +116,8 @@
       <workItem from="1734735632403" duration="735000" />
       <workItem from="1734739517010" duration="159000" />
       <workItem from="1734739738546" duration="966000" />
-      <workItem from="1734884130745" duration="24374000" />
+      <workItem from="1734884130745" duration="26815000" />
+      <workItem from="1734986900786" duration="650000" />
     </task>
     <servers />
   </component>
