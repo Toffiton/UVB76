@@ -22,12 +22,14 @@ public class DoorController : MonoBehaviour
     {
         controls.Main.Enable();
         controls.Main.Interact.performed += HandleInteract;
+        controls.Main.LKM.performed += HandleInteract;
     }
 
     private void OnDisable()
     {
         controls.Main.Disable();
         controls.Main.Interact.performed -= HandleInteract;
+        controls.Main.LKM.performed -= HandleInteract;
     }
 
     private void HandleInteract(InputAction.CallbackContext context)

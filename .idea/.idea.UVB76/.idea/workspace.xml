@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Control/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Control/Controls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Control/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Control/Controls.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Door/DoorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Door/DoorController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +101,7 @@
       <workItem from="1734735632403" duration="735000" />
       <workItem from="1734739517010" duration="159000" />
       <workItem from="1734739738546" duration="966000" />
-      <workItem from="1734884130745" duration="21022000" />
+      <workItem from="1734884130745" duration="21104000" />
     </task>
     <servers />
   </component>

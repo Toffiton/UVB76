@@ -22,14 +22,18 @@ public class ChairController : MonoBehaviour
     {
         controls.Main.Enable();
         controls.Main.Interact.performed += SitOnChair;
+        controls.Main.LKM.performed += SitOnChair;
         controls.Main.Exit.performed += GetUpFromChair;
+        controls.Main.PKM.performed += GetUpFromChair;
     }
 
     private void OnDisable()
     {
         controls.Main.Disable();
         controls.Main.Interact.performed -= SitOnChair;
+        controls.Main.LKM.performed -= SitOnChair;
         controls.Main.Exit.performed -= GetUpFromChair;
+        controls.Main.PKM.performed -= GetUpFromChair;
     }
 
     private void SitOnChair(InputAction.CallbackContext obj)
