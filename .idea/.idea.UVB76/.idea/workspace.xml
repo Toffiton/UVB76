@@ -6,31 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/Door.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/Door.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/Door_Frame.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/Door_Frame.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/Wood_facingFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/Wood_facingFrame.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Models/Door_V1.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Models/Door_V1.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Door_Albedo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Door_Albedo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Door_Door_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Door_Door_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Door_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Door_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Frame_Door_Albedo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Frame_Door_Albedo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Frame_Door_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Frame_Door_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Frame_Door_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/Door_V1_Frame_Door_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/ChairOffice.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Materials/ChairOffice.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Models/ChairOffice.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Models/ChairOffice.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/ChairOffice_Albedo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/ChairOffice_Albedo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/ChairOffice_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/ChairOffice_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/ChairOffice_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Abandoned_Asylum/Textures/ChairOffice_Normal.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +110,7 @@
       <workItem from="1734735632403" duration="735000" />
       <workItem from="1734739517010" duration="159000" />
       <workItem from="1734739738546" duration="966000" />
-      <workItem from="1734884130745" duration="15904000" />
+      <workItem from="1734884130745" duration="17145000" />
     </task>
     <servers />
   </component>
