@@ -13,7 +13,7 @@ public class MainGame : MonoBehaviour
 
     public int GetCurrentDay()
     {
-        return PlayerPrefs.GetInt("CurrentDay", 0);
+        return PlayerPrefs.GetInt("CurrentDay", 1);
     }
 
     public void SetCurrentDay(int day)

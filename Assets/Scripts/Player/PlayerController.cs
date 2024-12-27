@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
     public bool _isPlayerStopMovement = true;
     private Vector3 initialHandPosition;
     private Vector3 lastHandPosition;
-    
-    [SerializeField] private Vector3 playerLastPosition;
-    [SerializeField] private Quaternion playerLastRotation;
+
+    private Vector3 playerLastPosition;
+    private Quaternion playerLastRotation;
 
     private void Awake()
     {
