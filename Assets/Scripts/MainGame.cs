@@ -42,6 +42,7 @@ public class MainGame : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("day" + GetCurrentDay());
         if (GetIsFirstLoadGame() == 1)
         {
             SwitchText();

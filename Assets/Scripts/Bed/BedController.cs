@@ -22,24 +22,24 @@ public class BedController : MonoBehaviour
     private void OnEnable()
     {
         controls.Main.Enable();
-        controls.Main.Interact.performed += SitOnChair;
-        controls.Main.LKM.performed += SitOnChair;
+        controls.Main.Interact.performed += Sleep;
+        controls.Main.LKM.performed += Sleep;
     }
 
     private void OnDisable()
     {
         controls.Main.Disable();
-        controls.Main.Interact.performed -= SitOnChair;
-        controls.Main.LKM.performed -= SitOnChair;
+        controls.Main.Interact.performed -= Sleep;
+        controls.Main.LKM.performed -= Sleep;
     }
 
-    private void SitOnChair(InputAction.CallbackContext obj)
+    private void Sleep(InputAction.CallbackContext obj)
     {
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
             if (mainGame.GetCurrentDay() == 5)
             {
-                mainGame.SetCurrentDay(0);
+                mainGame.SetCurrentDay(1);
                 SceneManager.LoadScene(0);
                 return;
             }
