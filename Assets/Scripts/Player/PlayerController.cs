@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Vector2 = System.Numerics.Vector2;
 
 public class PlayerController : MonoBehaviour
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private float _cameraVerticalRotation = 0f;
     private bool _isRunning = false;
     private bool _isJumping = false;
-    public bool _isPlayerStopMovement = true;
+    public bool isPlayerStopMovement = true;
     private Vector3 initialHandPosition;
     private Vector3 lastHandPosition;
 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        isPlayerStopMovement = false;
         _controls = new Controls();
         _characterController = GetComponent<CharacterController>();
         initialHandPosition = hands.localPosition;
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _controls.Main.Enable();
-        _controls.Main.Jump.performed += OnJump;
+        //_controls.Main.Jump.performed += OnJump;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleLook();
         HandleHandSwing();
-        if (_isPlayerStopMovement)
+        if (isPlayerStopMovement)
         {
             HandleMovement();
         }
@@ -173,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
     public void SitOnChair(Vector3 playerPosition, Quaternion playerRotation)
     {
-        _isPlayerStopMovement = false;
+        isPlayerStopMovement = false;
         playerLastPosition = playerPosition;
         playerLastRotation = playerRotation;
 
@@ -186,6 +188,6 @@ public class PlayerController : MonoBehaviour
         transform.position = playerLastPosition;
         transform.rotation = playerLastRotation;
 
-        _isPlayerStopMovement = true;
+        isPlayerStopMovement = true;
     }
 }

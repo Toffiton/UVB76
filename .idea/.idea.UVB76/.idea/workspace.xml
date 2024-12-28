@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperTypes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperTypes.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
@@ -124,6 +120,7 @@
       <workItem from="1734986900786" duration="1120000" />
       <workItem from="1734995605024" duration="4609000" />
       <workItem from="1735259876429" duration="3347000" />
+      <workItem from="1735406408376" duration="6171000" />
     </task>
     <servers />
   </component>
