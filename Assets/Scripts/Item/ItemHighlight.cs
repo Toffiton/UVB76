@@ -51,6 +51,7 @@ public class ItemHighlight : MonoBehaviour
                         RemoveTakedItemSelector();
                     }
                 }
+
                 return; // Выходим, так как объект найден
             }
         }

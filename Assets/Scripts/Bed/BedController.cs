@@ -37,7 +37,7 @@ public class BedController : MonoBehaviour
     {
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
-            if (mainGame.GetCurrentDay() == 5)
+            if (mainGame.GetCurrentDay() == 6)
             {
                 mainGame.SetCurrentDay(1);
                 SceneManager.LoadScene(0);
