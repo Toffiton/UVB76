@@ -40,7 +40,10 @@ public class ItemHighlight : MonoBehaviour
                     if (takedItem.GetPlayerInRange())
                     {
                         takedItem.SetItemIsSelected(true);
-                        RemoveHighlight(); // Убираем подсветку с предыдущего объекта
+
+                        RemoveHighlight();
+                        RemoveTakedItemSelector();
+
                         ApplyHighlight(outline); // Подсвечиваем новый объект
                         ApplyTakedItem(takedItem);
                     }

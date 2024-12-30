@@ -15,11 +15,6 @@ public class TransceiverController : MonoBehaviour
 
     public int frequency = 4000;
 
-    private float holdTimerLeft = 0f; // Таймер удержания левой кнопки
-    private float holdTimerRight = 0f; // Таймер удержания правой кнопки
-
-    private const float holdThreshold = 0.2f; // Порог времени для определения удержания
-
     void Update()
     {
         // Обновляем состояние кнопок
@@ -27,33 +22,17 @@ public class TransceiverController : MonoBehaviour
         rightButton.isCanButtonPressed = !leftButton.isButtonPressed;
 
         // Обработка левой кнопки
-        HandleButtonPress(-1, leftButton, ref holdTimerLeft);
+        HandleButtonPress(-1, leftButton);
 
         // Обработка правой кнопки
-        HandleButtonPress(1, rightButton, ref holdTimerRight);
+        HandleButtonPress(1, rightButton);
     }
 
-    private void HandleButtonPress(int direction, ButtonPressController button, ref float holdTimer)
+    private void HandleButtonPress(int direction, ButtonPressController button)
     {
         if (button.isButtonPressed)
         {
-            holdTimer += Time.deltaTime;
-
-            if (holdTimer < holdThreshold) // Одиночное нажатие
-            {
-                if (Mathf.Approximately(holdTimer, Time.deltaTime)) // Выполняем только один раз
-                {
-                    ChangeFrequency(direction * frequencyStep, transform);
-                }
-            }
-            else // Удержание: плавное изменение
-            {
-                ChangeFrequency(direction * frequencyStep, transform);
-            }
-        }
-        else
-        {
-            holdTimer = 0f; // Сброс таймера при отпускании кнопки
+            ChangeFrequency(direction * frequencyStep, transform);
         }
     }
 
@@ -61,11 +40,6 @@ public class TransceiverController : MonoBehaviour
     {
         // Меняем частоту с учётом границ
         frequency = (int)Mathf.Clamp(frequency + change, minFrequency, maxFrequency);
-        if (isRound)
-        {
-            // Округляем частоту к кратному шагу
-            frequency = (int)Mathf.Round(frequency / frequencyStep) * frequencyStep;
-        }
         // Обновляем текст
         UpdateFrequencyText();
     }
