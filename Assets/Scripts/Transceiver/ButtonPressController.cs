@@ -11,10 +11,7 @@ public class ButtonPressController : MonoBehaviour
     private Vector3 targetLocalPosition;
     private Controls controls;
 
-    /** Локальный тогл кнопки */
     public bool isButtonPressed = false;
-    /** Даёт ли главный котроллер право на нажатие */
-    public bool isCanButtonPressed = false;
 
     private void Awake()
     {
@@ -53,7 +50,7 @@ public class ButtonPressController : MonoBehaviour
 
     private void OnButtonPressed(InputAction.CallbackContext context)
     {
-        if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected() && isCanButtonPressed)
+        if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
             isButtonPressed = true;
             targetLocalPosition = initialLocalPosition + pressedPositionOffset;
