@@ -12,6 +12,7 @@ public class MainGame : MonoBehaviour
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private GameObject informationBlock;
     [SerializeField] private TextMeshProUGUI informationText;
+    [SerializeField] private AudioSource phoneSound;
 
     private int currentTextStep = 0;
     
@@ -53,6 +54,16 @@ public class MainGame : MonoBehaviour
             player.isPlayerStopMovement = true;
             informationBlock.SetActive(false);
         }
+    }
+
+    public void PlayPhoneSound()
+    {
+        phoneSound.Play();
+    }
+
+    public void StopPhoneSound()
+    {
+        phoneSound.Stop();
     }
 
     private void SwitchTextExecute(InputAction.CallbackContext obj)

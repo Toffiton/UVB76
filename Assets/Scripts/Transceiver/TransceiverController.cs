@@ -8,12 +8,12 @@ public class TransceiverController : MonoBehaviour
     [SerializeField] private ButtonPressController leftButton;
     [SerializeField] private ButtonPressController rightButton;
 
-    [SerializeField] private float frequencyStep = 0.125f; // Шаг изменения частоты
+    [SerializeField] private int frequencyStep = 125; // Шаг изменения частоты
     [SerializeField] private float holdChangeSpeed = 0.5f; // Скорость изменения частоты при удержании
-    [SerializeField] private float minFrequency = 100.000f; // Минимальная частота
-    [SerializeField] private float maxFrequency = 200.000f; // Максимальная частота
+    [SerializeField] private int minFrequency = 3000; // Минимальная частота
+    [SerializeField] private int maxFrequency = 5000; // Максимальная частота
 
-    private float frequency = 146.000f;
+    private int frequency = 4000;
 
     private float holdTimerLeft = 0f; // Таймер удержания левой кнопки
     private float holdTimerRight = 0f; // Таймер удержания правой кнопки
@@ -60,11 +60,11 @@ public class TransceiverController : MonoBehaviour
     private void ChangeFrequency(float change, bool isRound)
     {
         // Меняем частоту с учётом границ
-        frequency = Mathf.Clamp(frequency + change, minFrequency, maxFrequency);
+        frequency = (int)Mathf.Clamp(frequency + change, minFrequency, maxFrequency);
         if (isRound)
         {
             // Округляем частоту к кратному шагу
-            frequency = Mathf.Round(frequency / frequencyStep) * frequencyStep;
+            frequency = (int)Mathf.Round(frequency / frequencyStep) * frequencyStep;
         }
         // Обновляем текст
         UpdateFrequencyText();
@@ -73,6 +73,6 @@ public class TransceiverController : MonoBehaviour
     private void UpdateFrequencyText()
     {
         // Преобразуем частоту в строку формата "XXX.XXX"
-        frequencyText.text = frequency.ToString("F3");
+        frequencyText.text = frequency.ToString();
     }
 }
