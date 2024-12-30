@@ -40,7 +40,11 @@ public class ChairController : MonoBehaviour
     {
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
-            mainGame.PlayPhoneSound();
+            if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()))
+            {
+                mainGame.isQuestStarted = true;
+                mainGame.PlayPhoneSound();
+            }
             isSiting = true;
             player.SitOnChair(playerPosition, playerRotation);
         }

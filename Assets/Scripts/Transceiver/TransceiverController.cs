@@ -13,7 +13,7 @@ public class TransceiverController : MonoBehaviour
     [SerializeField] private int minFrequency = 3000; // Минимальная частота
     [SerializeField] private int maxFrequency = 5000; // Максимальная частота
 
-    private int frequency = 4000;
+    public int frequency = 4000;
 
     private float holdTimerLeft = 0f; // Таймер удержания левой кнопки
     private float holdTimerRight = 0f; // Таймер удержания правой кнопки
@@ -48,7 +48,7 @@ public class TransceiverController : MonoBehaviour
             }
             else // Удержание: плавное изменение
             {
-                ChangeFrequency(direction * holdChangeSpeed * Time.deltaTime, false);
+                ChangeFrequency(direction * frequencyStep, transform);
             }
         }
         else

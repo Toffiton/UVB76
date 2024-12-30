@@ -58,7 +58,11 @@ public class PhoneController : MonoBehaviour
             isTaked = true;
             defaultHand.SetActive(false);
             handWithPhone.SetActive(true);
-            handWithPhoneAudio.Play();
+            if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()) && mainGame.isQuestStarted)
+            {
+                handWithPhoneAudio.Play();
+                PhonePrefs.SetPhoneCallIsListenById(mainGame.GetCurrentDay());
+            }
             HidePhone();
         }
     }
@@ -69,8 +73,14 @@ public class PhoneController : MonoBehaviour
         {
             StartCoroutine(mainGame.SetIsTakedItemWithDelay(false));
             isTaked = false;
+
+            if (handWithPhoneAudio.isPlaying)
+            {
+                handWithPhoneAudio.Stop();
+            }
             handWithPhone.SetActive(false);
             defaultHand.SetActive(true);
+
             ShowPhone();
         }
     }

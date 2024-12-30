@@ -8,6 +8,7 @@ public class MainGame : MonoBehaviour
 {
     public bool isTakedItem;
     public bool isFirstLoadGame;
+    public bool isQuestStarted = false;
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private GameObject informationBlock;
