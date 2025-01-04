@@ -7,7 +7,7 @@ public class PaperSpawner : MonoBehaviour
 
     void Start()
     {
-        var paper = Instantiate(paperPrefab, transform.position, paperPrefab.transform.rotation);
+        var paper = Instantiate(paperPrefab, transform.position, transform.rotation);
         paper.GetComponent<PaperController>().isSpawnOnTable = true;
         switch (mainGame.GetCurrentDay())
         {

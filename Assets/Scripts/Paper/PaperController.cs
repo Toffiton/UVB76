@@ -54,7 +54,7 @@ public class PaperController : MonoBehaviour
 
         if (!isSpawnOnTable)
         {
-            if (mainGame.GetCurrentDay() > (int)paperType)
+            if (mainGame.GetCurrentDay() == (int)paperType + 1)
             {
                 ShowPaper();
             }
