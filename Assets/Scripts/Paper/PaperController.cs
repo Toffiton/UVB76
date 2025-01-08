@@ -1,24 +1,20 @@
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PaperController : MonoBehaviour
 {
-    [SerializeField] public PaperTypes paperType;
-    /**
-     * Заспавнен объект на доске или на столе
-     *
-     * 1) true - На столе, дестроим объект после дропа
-     * 2) false - На доске, прячем объект при взятии, показываем при дропе
-     */
-    [SerializeField] public bool isSpawnOnTable = false;
+    [SerializeField] private bool isFaxPaper;
+    [SerializeField] [CanBeNull] private PaperController paperOnTable;
     [SerializeField] private MainGame mainGame;
     [SerializeField] private TakedItem takedItem;
     [SerializeField] private GameObject defaultHand;
     [SerializeField] private GameObject handWithPaper;
     [SerializeField] private TextMeshProUGUI paperText;
     [SerializeField] private TextMeshProUGUI paperTextInHead;
-    
+
+    private PaperTypes _paperType;
     private Vector3 defaultPosition;
 
     private bool isTaked = false;
@@ -50,18 +46,34 @@ public class PaperController : MonoBehaviour
 
     private void Start()
     {
+        switch (mainGame.GetCurrentDay())
+        {
+            case 1:
+                _paperType = PaperTypes.FirstDay;
+                break;
+            case 2:
+                _paperType = PaperTypes.SecondDay;
+                break;
+            case 3:
+                _paperType = PaperTypes.ThirdDay;
+                break;
+            case 4:
+                _paperType = PaperTypes.FourthDay;
+                break;
+            case 5:
+                _paperType = PaperTypes.FifthDay;
+                break;
+        }
+        
         defaultPosition = transform.position;
 
-        if (!isSpawnOnTable)
+        if (isFaxPaper)
         {
-            if (mainGame.GetCurrentDay() == (int)paperType + 1)
-            {
-                ShowPaper();
-            }
-            else
-            {
-                HidePaper();
-            }
+            ShowPaper();
+        }
+        else
+        {
+            HidePaper();
         }
 
         SetTextInPaper();
@@ -89,13 +101,19 @@ public class PaperController : MonoBehaviour
     {
         if (isTaked)
         {
+            if (isFaxPaper)
+            {
+                mainGame.isTakedPaperOnFax = true;
+            }
+
             StartCoroutine(mainGame.SetIsTakedItemWithDelay(false));
             isTaked = false;
             handWithPaper.SetActive(false);
             defaultHand.SetActive(true);
-            if (isSpawnOnTable)
+            if (isFaxPaper)
             {
                 mainGame.isTakedItem = false;
+                paperOnTable?.ShowPaper();
                 Destroy(gameObject);
             }
             else
@@ -142,7 +160,7 @@ public class PaperController : MonoBehaviour
 
     private void SetTextInPaperHand()
     {
-        switch (paperType)
+        switch (_paperType)
         {
             case PaperTypes.FirstDay:
                 paperTextInHead.text = "<size=0.015><b>День 1</b></size>\n<line-height=0.01><size=0.01>Странное пробуждение... И почему Бобер не курва? Задай этот вопрос пустому небу.</size></line-height>";

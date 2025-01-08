@@ -9,6 +9,9 @@ public class MainGame : MonoBehaviour
     public bool isTakedItem;
     public bool isFirstLoadGame;
     public bool isQuestStarted = false;
+
+    public bool isTakedPaperOnFax = false;
+
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private GameObject informationBlock;
@@ -45,6 +48,7 @@ public class MainGame : MonoBehaviour
     private void Start()
     {
         Debug.Log("day" + GetCurrentDay());
+        // PlayerPrefs.DeleteAll();
         if (GetIsFirstLoadGame() == 1)
         {
             SwitchText();
