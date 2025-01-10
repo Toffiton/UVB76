@@ -22,6 +22,11 @@ public class MainGame : MonoBehaviour
     
     private Controls controls;
 
+    public void ExecuteSetIsTakedItemWithDelay(bool isTakedItem)
+    {
+        StartCoroutine(SetIsTakedItemWithDelay(isTakedItem));
+    }
+
     public IEnumerator SetIsTakedItemWithDelay(bool isTakedItem)
     {
         yield return new WaitForSeconds(0.1f);

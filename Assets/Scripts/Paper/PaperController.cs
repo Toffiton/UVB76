@@ -106,7 +106,7 @@ public class PaperController : MonoBehaviour
                 mainGame.isTakedPaperOnFax = true;
             }
 
-            StartCoroutine(mainGame.SetIsTakedItemWithDelay(false));
+            mainGame.ExecuteSetIsTakedItemWithDelay(false);
             isTaked = false;
             handWithPaper.SetActive(false);
             defaultHand.SetActive(true);
@@ -138,22 +138,22 @@ public class PaperController : MonoBehaviour
         switch (mainGame.GetCurrentDay())
         {
             case (int)PaperTypes.FirstDay:
-                paperText.text = "<size=0.015><b>День 1</b></size>\n<line-height=0.01><size=0.01>Странное пробуждение... И почему Бобер не курва? Задай этот вопрос пустому небу.</size></line-height>";
+                paperText.text = "<size=0.015><b>День 1. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Николай Светлана\n2 — Ольга Анна\n3 — Роман Павел\n4 — Василий Дмитрий\n5 — Сергей Елена\n6 — Иван Мария\n7 — Ольга Тамара\n8 — Григорий Юлия\n9 — Александр Петя\n0 — Артём Анатолий</size></line-height>";
                 break;
             case (int)PaperTypes.SecondDay:
-                paperText.text = "<size=0.015><b>День 2</b></size>\n<line-height=0.01><size=0.01>В лесу шепчут древние существа. Это Бобер или Бобер — это всего лишь его маска?</size></line-height>";
+                paperText.text = "<size=0.015><b>День 2. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Ирина\n2 — Борис Наталья\n3 — Виктор Ольга\n4 — Григорий Анна\n5 — Дмитрий Юлия\n6 — Евгений Елена\n7 — Иван Светлана\n8 — Константин Мария\n9 — Лев Анастасия\n0 — Михаил Татьяна</size></line-height>";
                 break;
             case (int)PaperTypes.ThirdDay:
-                paperText.text = "<size=0.015><b>День 3</b></size>\n<line-height=0.01><size=0.01>Темные воды бурлят. И снова этот вопрос: Бобер курва? Но кто ты, чтобы задавать такие вопросы?</size></line-height>";
+                paperText.text = "<size=0.015><b>День 3. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Павел Надежда\n2 — Роман Валерия\n3 — Станислав Наталья\n4 — Тимофей Елена\n5 — Фёдор Ольга\n6 — Юрий Анна\n7 — Артём Светлана\n8 — Владислав Мария\n9 — Георгий Татьяна\n0 — Василий Анастасия</size></line-height>";
                 break;
             case (int)PaperTypes.FourthDay:
-                paperText.text = "<size=0.015><b>День 4</b></size>\n<line-height=0.01><size=0.01>Горы пылают, и в их тени Бобер стоит. Не курва ли он, или же он больше, чем мы можем понять?</size></line-height>";
+                paperText.text = "<size=0.015><b>День 4. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Оксана\n2 — Борис Виктория\n3 — Владимир Елена\n4 — Дмитрий Ирина\n5 — Евгений Татьяна\n6 — Игорь Наталья\n7 — Константин Светлана\n8 — Николай Марина\n9 — Олег Анна\n0 — Пётр Надежда</size></line-height>";
                 break;
             case (int)PaperTypes.FifthDay:
-                paperText.text = "<size=0.015><b>День 5</b></size>\n<line-height=0.01><size=0.01>Ветер принесёт ответы, или его унесет вон тот Бобер? Его лицо исчезает в тумане, оставляя лишь его след.</size></line-height>";
+                paperText.text = "<size=0.015><b>День 5. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Сергей Валерия\n2 — Тимофей Юлия\n3 — Фёдор Марина\n4 — Юрий Оксана\n5 — Артём Анастасия\n6 — Владислав Ирина\n7 — Георгий Виктория\n8 — Иван Елена\n9 — Константин Ольга\n0 — Лев Светлана</size></line-height>";
                 break;
             case (int)PaperTypes.SixthDay:
-                paperText.text = "<size=0.015><b>День 6</b></size>\n<line-height=0.01><size=0.01>Кажется, мы не одни. Вдалеке — громкий смех. Или это просто Бобер, и он снова курва?</size></line-height>";
+                paperText.text = "<size=0.015><b>День 6. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Михаил Наталья\n2 — Николай Татьяна\n3 — Олег Анна\n4 — Павел Марина\n5 — Роман Оксана\n6 — Станислав Валерия\n7 — Тимофей Юлия\n8 — Фёдор Светлана\n9 — Юрий Виктория\n0 — Артём Ирина</size></line-height>";
                 break;
         }
     }
@@ -163,22 +163,22 @@ public class PaperController : MonoBehaviour
         switch (_paperType)
         {
             case PaperTypes.FirstDay:
-                paperTextInHead.text = "<size=0.015><b>День 1</b></size>\n<line-height=0.01><size=0.01>Странное пробуждение... И почему Бобер не курва? Задай этот вопрос пустому небу.</size></line-height>";
+                paperTextInHead.text = "<size=0.015><b>День 1. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Николай Светлана\n2 — Ольга Анна\n3 — Роман Павел\n4 — Василий Дмитрий\n5 — Сергей Елена\n6 — Иван Мария\n7 — Ольга Тамара\n8 — Григорий Юлия\n9 — Александр Петя\n0 — Артём Анатолий</size></line-height>";
                 break;
             case PaperTypes.SecondDay:
-                paperTextInHead.text = "<size=0.015><b>День 2</b></size>\n<line-height=0.01><size=0.01>В лесу шепчут древние существа. Это Бобер или Бобер — это всего лишь его маска?</size></line-height>";
+                paperTextInHead.text = "<size=0.015><b>День 2. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Ирина\n2 — Борис Наталья\n3 — Виктор Ольга\n4 — Григорий Анна\n5 — Дмитрий Юлия\n6 — Евгений Елена\n7 — Иван Светлана\n8 — Константин Мария\n9 — Лев Анастасия\n0 — Михаил Татьяна</size></line-height>";
                 break;
             case PaperTypes.ThirdDay:
-                paperTextInHead.text = "<size=0.015><b>День 3</b></size>\n<line-height=0.01><size=0.01>Темные воды бурлят. И снова этот вопрос: Бобер курва? Но кто ты, чтобы задавать такие вопросы?</size></line-height>";
+                paperTextInHead.text = "<size=0.015><b>День 3. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Павел Надежда\n2 — Роман Валерия\n3 — Станислав Наталья\n4 — Тимофей Елена\n5 — Фёдор Ольга\n6 — Юрий Анна\n7 — Артём Светлана\n8 — Владислав Мария\n9 — Георгий Татьяна\n0 — Василий Анастасия</size></line-height>";
                 break;
             case PaperTypes.FourthDay:
-                paperTextInHead.text = "<size=0.015><b>День 4</b></size>\n<line-height=0.01><size=0.01>Горы пылают, и в их тени Бобер стоит. Не курва ли он, или же он больше, чем мы можем понять?</size></line-height>";
+                paperTextInHead.text = "<size=0.015><b>День 4. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Оксана\n2 — Борис Виктория\n3 — Владимир Елена\n4 — Дмитрий Ирина\n5 — Евгений Татьяна\n6 — Игорь Наталья\n7 — Константин Светлана\n8 — Николай Марина\n9 — Олег Анна\n0 — Пётр Надежда</size></line-height>";
                 break;
             case PaperTypes.FifthDay:
-                paperTextInHead.text = "<size=0.015><b>День 5</b></size>\n<line-height=0.01><size=0.01>Ветер принесёт ответы, или его унесет вон тот Бобер? Его лицо исчезает в тумане, оставляя лишь его след.</size></line-height>";
+                paperTextInHead.text = "<size=0.015><b>День 5. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Сергей Валерия\n2 — Тимофей Юлия\n3 — Фёдор Марина\n4 — Юрий Оксана\n5 — Артём Анастасия\n6 — Владислав Ирина\n7 — Георгий Виктория\n8 — Иван Елена\n9 — Константин Ольга\n0 — Лев Светлана</size></line-height>";
                 break;
             case PaperTypes.SixthDay:
-                paperTextInHead.text = "<size=0.015><b>День 6</b></size>\n<line-height=0.01><size=0.01>Кажется, мы не одни. Вдалеке — громкий смех. Или это просто Бобер, и он снова курва?</size></line-height>";
+                paperTextInHead.text = "<size=0.015><b>День 6. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Михаил Наталья\n2 — Николай Татьяна\n3 — Олег Анна\n4 — Павел Марина\n5 — Роман Оксана\n6 — Станислав Валерия\n7 — Тимофей Юлия\n8 — Фёдор Светлана\n9 — Юрий Виктория\n0 — Артём Ирина</size></line-height>";
                 break;
         }
     }
