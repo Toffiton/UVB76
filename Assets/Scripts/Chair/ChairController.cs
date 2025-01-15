@@ -59,20 +59,20 @@ public class ChairController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        // Проверяем, установлены ли позиции и ротация
-        if (playerPosition != Vector3.zero && playerRotation != Quaternion.identity)
-        {
-            Gizmos.color = Color.red; // Цвет стрелки
-
-            // Рисуем саму стрелку
-            Vector3 arrowDirection = playerRotation * Vector3.forward; // Направление стрелки из ротации игрока
-            Gizmos.DrawLine(playerPosition, playerPosition + arrowDirection * 2f); // Делаем длину стрелки 2 единицы
-
-            // Рисуем наконечник стрелки
-            Gizmos.DrawRay(playerPosition + arrowDirection * 2f, Quaternion.Euler(0, 45, 0) * arrowDirection * 0.5f);
-            Gizmos.DrawRay(playerPosition + arrowDirection * 2f, Quaternion.Euler(0, -45, 0) * arrowDirection * 0.5f);
-        }
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     // Проверяем, установлены ли позиции и ротация
+    //     if (playerPosition != Vector3.zero && playerRotation != Quaternion.identity)
+    //     {
+    //         Gizmos.color = Color.red; // Цвет стрелки
+    //
+    //         // Рисуем саму стрелку
+    //         Vector3 arrowDirection = playerRotation * Vector3.forward; // Направление стрелки из ротации игрока
+    //         Gizmos.DrawLine(playerPosition, playerPosition + arrowDirection * 2f); // Делаем длину стрелки 2 единицы
+    //
+    //         // Рисуем наконечник стрелки
+    //         Gizmos.DrawRay(playerPosition + arrowDirection * 2f, Quaternion.Euler(0, 45, 0) * arrowDirection * 0.5f);
+    //         Gizmos.DrawRay(playerPosition + arrowDirection * 2f, Quaternion.Euler(0, -45, 0) * arrowDirection * 0.5f);
+    //     }
+    // }
 }

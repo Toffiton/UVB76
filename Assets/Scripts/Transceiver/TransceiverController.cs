@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class TransceiverController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI frequencyText;
@@ -16,6 +17,11 @@ public class TransceiverController : MonoBehaviour
     [SerializeField] private float acceleration = 0.1f; // Ускорение изменения частоты при удержании
     [SerializeField] private int minFrequency = 3000; // Минимальная частота
     [SerializeField] private int maxFrequency = 5000; // Максимальная частота
+    [SerializeField] private int targetFrequency = 4625; // Целевая частота
+
+    [SerializeField] private AudioSource speechSource;
+
+    [SerializeField] private AudioLowPassFilter lowPassFilter;
 
     public int frequency = 4000;
 
@@ -25,7 +31,6 @@ public class TransceiverController : MonoBehaviour
     private bool leftStepHandled = false;
     private bool rightStepHandled = false;
 
-    
     void Update()
     {
         HandleButtonPress(-1, leftButton, ref holdTimeLeft);
@@ -33,6 +38,8 @@ public class TransceiverController : MonoBehaviour
 
         HandleStepButtonPress(-1, leftStepButton, ref leftStepHandled);
         HandleStepButtonPress(1, rightStepButton, ref rightStepHandled);
+
+        UpdateAudioEffects();
     }
 
     private void HandleButtonPress(int direction, ButtonPressController button, ref float holdTime)
@@ -66,26 +73,50 @@ public class TransceiverController : MonoBehaviour
 
     private void ChangeFrequencyWithRounding(float change)
     {
-        // Меняем частоту и округляем до ближайшего значения, кратного roundingStep
         frequency = (int)Mathf.Clamp(frequency + change, minFrequency, maxFrequency);
         frequency = Mathf.RoundToInt(frequency / (float)roundingStep) * roundingStep;
 
-        // Обновляем текст
         UpdateFrequencyText();
     }
 
     private void ChangeFrequency(float change)
     {
-        // Меняем частоту с учётом границ
         frequency = (int)Mathf.Clamp(frequency + change, minFrequency, maxFrequency);
 
-        // Обновляем текст
         UpdateFrequencyText();
     }
 
     private void UpdateFrequencyText()
     {
-        // Преобразуем частоту в строку формата "XXXX"
         frequencyText.text = frequency.ToString();
+    }
+
+    private void UpdateAudioEffects()
+    {
+        // Расстояние до целевой частоты
+        float distanceToTarget = Mathf.Abs(frequency - targetFrequency);
+
+        // Нормализация расстояния для диапазона от 0 до 1
+        float normalizedDistance = Mathf.Clamp01(distanceToTarget / (maxFrequency - minFrequency));
+
+        // Настройка помех (низкочастотный фильтр для имитации шумов)
+        lowPassFilter.cutoffFrequency = Mathf.Lerp(500, 22000, 1 - normalizedDistance);
+
+        // Если частота в пределах заданного диапазона, воспроизводим речь
+        if (distanceToTarget <= 100) // Задайте диапазон, например ±100 от цели
+        {
+            if (!speechSource.isPlaying)
+            {
+                speechSource.UnPause(); // Продолжаем воспроизведение, если оно было на паузе
+            }
+            speechSource.volume = Mathf.Lerp(0.5f, 1f, 1 - normalizedDistance); // Увеличиваем громкость речи
+        }
+        else
+        {
+            if (speechSource.isPlaying)
+            {
+                speechSource.Pause(); // Ставим на паузу, если за пределами диапазона
+            }
+        }
     }
 }
