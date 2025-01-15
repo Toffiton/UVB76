@@ -45,6 +45,12 @@ public class ButtonPressController : MonoBehaviour
 
     private void Update()
     {
+        if (!takedItem.GetPlayerInRange() || !takedItem.GetItemIsSelected())
+        {
+            isButtonPressed = false;
+            targetLocalPosition = initialLocalPosition;
+        }
+
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPosition, pressSpeed * Time.deltaTime);
     }
 

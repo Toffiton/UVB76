@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Phone/PhoneSoundController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Phone/PhoneSoundController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ConvertMaterialsToURP.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ConvertMaterialsToURP.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Materials/PC_Monitor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Materials/PC_Monitor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Numbers/numerickeypad.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Numbers/numerickeypad.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/voice.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/voice.mp3.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chair/ChairController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Transceiver/ButtonPressController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Transceiver/ButtonPressController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst/Editor/BurstMenu.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy/Editor/PlasticMenuItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy/Editor/PlasticPlugin.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy/Editor/UI/Images.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections/Unity.Collections.PerformanceTests/BenchmarkContainer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections/Unity.Collections.PerformanceTests/RingQueuePerformanceTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider/Rider/Editor/ProjectGeneration/AssemblyNameProvider.cs" root0="SKIP_HIGHLIGHTING" />
@@ -97,7 +95,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../UVB76Build/Game/UVB76.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../UVB76Build/Build.x86_64" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UVB76Build/Game" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -176,6 +174,7 @@
       <workItem from="1736672344927" duration="4078000" />
       <workItem from="1736794470577" duration="1444000" />
       <workItem from="1736885741622" duration="965000" />
+      <workItem from="1736968732057" duration="5188000" />
     </task>
     <servers />
   </component>

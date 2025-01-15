@@ -23203,6 +23203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7716224755815828711}
   - {fileID: 1875435165}
   - {fileID: 7401952430918966765}
   - {fileID: 820404885}
@@ -39597,6 +39598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652433827922}
   - component: {fileID: 919132148180816617}
+  - component: {fileID: 919132148180816620}
   - component: {fileID: 919132148180816619}
   - component: {fileID: 919132148180816618}
   m_Layer: 0
@@ -39630,8 +39632,6 @@ MonoBehaviour:
   minFrequency: 3000
   maxFrequency: 5000
   targetFrequency: 4625
-  speechSource: {fileID: 919132148180816619}
-  lowPassFilter: {fileID: 919132148180816618}
   frequency: 4000
 --- !u!169 &919132148180816618
 AudioLowPassFilter:
@@ -39773,6 +39773,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &919132148180816620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148180816616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31973e45fe314764ab7d41493077abf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainGame: {fileID: 1198469786}
+  transceiverController: {fileID: 919132148180816617}
+  soundFirstDay: {fileID: 8300000, guid: 659336a1e9208adf49542b410903104a, type: 3}
+  speechSource: {fileID: 919132148180816619}
+  lowPassFilter: {fileID: 919132148180816618}
 --- !u!23 &1021924951968994260
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42504,6 +42521,7 @@ GameObject:
   - component: {fileID: 5681976172113622132}
   - component: {fileID: 3591572480226600910}
   - component: {fileID: 6337570473024278224}
+  - component: {fileID: 6337570473024278226}
   - component: {fileID: 6337570473024278225}
   m_Layer: 3
   m_Name: Phone
@@ -42649,6 +42667,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6337570473024278226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337570473024278220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d88cc8aa2f54d79992952f282393eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainGame: {fileID: 0}
+  transceiverController: {fileID: 0}
+  step1: {fileID: 0}
+  step2: {fileID: 0}
+  step3: {fileID: 0}
+  speechSource: {fileID: 6337570473024278225}
+  lowPassFilter: {fileID: 0}
 --- !u!33 &6343930895738381785
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43580,7 +43617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6944085690427250269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.4692, y: 1.725, z: -5.8288}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -43599,7 +43636,7 @@ Transform:
   - {fileID: 7838423706167692813}
   - {fileID: 2772609210264125198}
   - {fileID: 6873670721978455938}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1441423482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7716224755815828712
 MonoBehaviour:
@@ -44556,4 +44593,3 @@ SceneRoots:
   - {fileID: 1642902479}
   - {fileID: 1737192190}
   - {fileID: 1579642435}
-  - {fileID: 7716224755815828711}
