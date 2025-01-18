@@ -17,7 +17,7 @@ public class PaperController : MonoBehaviour
     private PaperTypes _paperType;
     private Vector3 defaultPosition;
 
-    private bool isTaked = false;
+    public bool isTaked = false;
 
     private Controls controls;
 

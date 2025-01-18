@@ -42,6 +42,7 @@ public class ChairController : MonoBehaviour
         {
             if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()))
             {
+                Debug.Log("1111");
                 mainGame.isQuestStarted = true;
                 mainGame.PlayPhoneSound();
             }

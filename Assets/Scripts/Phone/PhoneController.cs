@@ -8,8 +8,8 @@ public class PhoneController : MonoBehaviour
 
     [SerializeField] private GameObject defaultHand;
     [SerializeField] private GameObject handWithPhone;
-    [SerializeField] private AudioSource handWithPhoneAudio;
-    
+    [SerializeField] private PhoneSoundController phoneSoundController;
+
     private Vector3 defaultPosition;
 
     private bool isTaked = false;
@@ -60,7 +60,7 @@ public class PhoneController : MonoBehaviour
             handWithPhone.SetActive(true);
             if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()) && mainGame.isQuestStarted)
             {
-                handWithPhoneAudio.Play();
+                StartCoroutine(phoneSoundController.StartCall());
                 PhonePrefs.SetPhoneCallIsListenById(mainGame.GetCurrentDay());
             }
             HidePhone();
@@ -74,10 +74,7 @@ public class PhoneController : MonoBehaviour
             StartCoroutine(mainGame.SetIsTakedItemWithDelay(false));
             isTaked = false;
 
-            if (handWithPhoneAudio.isPlaying)
-            {
-                handWithPhoneAudio.Stop();
-            }
+            phoneSoundController.CancelCall();
             handWithPhone.SetActive(false);
             defaultHand.SetActive(true);
 

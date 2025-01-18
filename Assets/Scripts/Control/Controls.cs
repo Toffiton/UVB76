@@ -94,7 +94,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Smell"",
                     ""type"": ""Button"",
                     ""id"": ""9358c098-6fe6-4c8c-ae8a-5adae560c3b6"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -130,7 +130,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""OpenMap"",
                     ""type"": ""Button"",
                     ""id"": ""dfb5a493-e395-44be-84ed-f2f8c6211cc3"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -175,6 +175,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""PKM"",
                     ""type"": ""Button"",
                     ""id"": ""ba98c7f7-59b5-4142-be48-243e72f704ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""90652668-4c9e-40a0-8df5-fd65ef1086e0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -709,6 +718,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""PKM"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""427e5890-3176-4f4f-aaaf-acfc97191ddf"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard + Mouse"",
+                    ""action"": ""LButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -762,6 +782,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Main_Breaks = m_Main.FindAction("Breaks", throwIfNotFound: true);
         m_Main_LKM = m_Main.FindAction("LKM", throwIfNotFound: true);
         m_Main_PKM = m_Main.FindAction("PKM", throwIfNotFound: true);
+        m_Main_LButton = m_Main.FindAction("LButton", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -845,6 +866,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Breaks;
     private readonly InputAction m_Main_LKM;
     private readonly InputAction m_Main_PKM;
+    private readonly InputAction m_Main_LButton;
     public struct MainActions
     {
         private @Controls m_Wrapper;
@@ -866,6 +888,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Breaks => m_Wrapper.m_Main_Breaks;
         public InputAction @LKM => m_Wrapper.m_Main_LKM;
         public InputAction @PKM => m_Wrapper.m_Main_PKM;
+        public InputAction @LButton => m_Wrapper.m_Main_LButton;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -926,6 +949,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @PKM.started += instance.OnPKM;
             @PKM.performed += instance.OnPKM;
             @PKM.canceled += instance.OnPKM;
+            @LButton.started += instance.OnLButton;
+            @LButton.performed += instance.OnLButton;
+            @LButton.canceled += instance.OnLButton;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -981,6 +1007,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @PKM.started -= instance.OnPKM;
             @PKM.performed -= instance.OnPKM;
             @PKM.canceled -= instance.OnPKM;
+            @LButton.started -= instance.OnLButton;
+            @LButton.performed -= instance.OnLButton;
+            @LButton.canceled -= instance.OnLButton;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -1035,5 +1064,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnBreaks(InputAction.CallbackContext context);
         void OnLKM(InputAction.CallbackContext context);
         void OnPKM(InputAction.CallbackContext context);
+        void OnLButton(InputAction.CallbackContext context);
     }
 }

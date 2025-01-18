@@ -53,7 +53,6 @@ public class MainGame : MonoBehaviour
     private void Start()
     {
         Debug.Log("day" + GetCurrentDay());
-        // PlayerPrefs.DeleteAll();
         if (GetIsFirstLoadGame() == 1)
         {
             SwitchText();
@@ -68,6 +67,7 @@ public class MainGame : MonoBehaviour
 
     public void PlayPhoneSound()
     {
+        Debug.Log("2222");
         phoneSound.Play();
     }
 
