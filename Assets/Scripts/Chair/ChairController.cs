@@ -42,7 +42,6 @@ public class ChairController : MonoBehaviour
         {
             if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()))
             {
-                Debug.Log("1111");
                 mainGame.isQuestStarted = true;
                 mainGame.PlayPhoneSound();
             }
@@ -53,7 +52,7 @@ public class ChairController : MonoBehaviour
 
     private void GetUpFromChair(InputAction.CallbackContext obj)
     {
-        if (isSiting && !mainGame.isTakedItem)
+        if (isSiting && !mainGame.isTakedPaper && !mainGame.isTakedPhone)
         {
             player.GetUpFromChair();
             isSiting = false;

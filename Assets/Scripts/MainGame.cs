@@ -3,10 +3,12 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class MainGame : MonoBehaviour
 {
-    public bool isTakedItem;
+    public bool isTakedPaper;
+    public bool isTakedPhone;
     public bool isFirstLoadGame;
     public bool isQuestStarted = false;
 
@@ -22,15 +24,26 @@ public class MainGame : MonoBehaviour
     
     private Controls controls;
 
-    public void ExecuteSetIsTakedItemWithDelay(bool isTakedItem)
+    public void ExecuteSetIsTakedPaperWithDelay(bool isTakedItem)
     {
-        StartCoroutine(SetIsTakedItemWithDelay(isTakedItem));
+        StartCoroutine(SetIsTakedPaperWithDelay(isTakedItem));
     }
 
-    public IEnumerator SetIsTakedItemWithDelay(bool isTakedItem)
+    public IEnumerator SetIsTakedPaperWithDelay(bool isTakedItem)
     {
         yield return new WaitForSeconds(0.1f);
-        this.isTakedItem = isTakedItem;
+        this.isTakedPaper = isTakedItem;
+    }
+
+    public void ExecuteSetIsTakedPhoneWithDelay(bool isTakedItem)
+    {
+        StartCoroutine(SetIsTakedPhoneWithDelay(isTakedItem));
+    }
+
+    public IEnumerator SetIsTakedPhoneWithDelay(bool isTakedItem)
+    {
+        yield return new WaitForSeconds(0.1f);
+        this.isTakedPhone = isTakedItem;
     }
 
     private void Awake()
@@ -67,7 +80,6 @@ public class MainGame : MonoBehaviour
 
     public void PlayPhoneSound()
     {
-        Debug.Log("2222");
         phoneSound.Play();
     }
 

@@ -8,6 +8,8 @@ public class PhoneSoundController : MonoBehaviour
     [SerializeField] private FaxController faxController;
     [Header("Бумага в факсе")]
     [SerializeField] private PaperController paper;
+    [Header("Бумага на столе")]
+    [SerializeField] private PaperController paperOnTable;
 
     [Space]
     [Header("День 1")]
@@ -26,7 +28,7 @@ public class PhoneSoundController : MonoBehaviour
 
     public IEnumerator StartCall()
     {
-        yield return PlayClip(step1);
+        //yield return PlayClip(step1);
         
         yield return PlayClip(step2);
 
@@ -95,8 +97,7 @@ public class PhoneSoundController : MonoBehaviour
 
         while (timer < duration)
         {
-            float frequency = transceiverController.frequency;
-            if (paper.isTaked)
+            if (paper.isTaked || paperOnTable.isTaked)
             {
                 timer += Time.deltaTime;
             }

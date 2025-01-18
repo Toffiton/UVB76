@@ -10,6 +10,7 @@ public class FaxController : MonoBehaviour
 
     public void PrintPaper()
     {
+        paper.ShowPaper();
         StartCoroutine(MovePaper());
     }
 

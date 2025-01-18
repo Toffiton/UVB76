@@ -46,7 +46,7 @@ public class PhoneController : MonoBehaviour
 
     private void TakeCall(InputAction.CallbackContext obj)
     {
-        if (mainGame.isTakedItem)
+        if (mainGame.isTakedPhone)
         {
             return;
         }
@@ -54,7 +54,7 @@ public class PhoneController : MonoBehaviour
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
             mainGame.StopPhoneSound();
-            mainGame.isTakedItem = true;
+            mainGame.isTakedPhone = true;
             isTaked = true;
             defaultHand.SetActive(false);
             handWithPhone.SetActive(true);
@@ -69,11 +69,11 @@ public class PhoneController : MonoBehaviour
 
     private void DropCall(InputAction.CallbackContext obj)
     {
-        if (isTaked)
+        if (isTaked && !mainGame.isTakedPaper)
         {
-            StartCoroutine(mainGame.SetIsTakedItemWithDelay(false));
+            StartCoroutine(mainGame.SetIsTakedPaperWithDelay(false));
             isTaked = false;
-
+            mainGame.ExecuteSetIsTakedPhoneWithDelay(false);
             phoneSoundController.CancelCall();
             handWithPhone.SetActive(false);
             defaultHand.SetActive(true);

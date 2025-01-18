@@ -1,3 +1,4 @@
+using System.Collections;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -64,7 +65,7 @@ public class PaperController : MonoBehaviour
                 _paperType = PaperTypes.FifthDay;
                 break;
         }
-        
+
         defaultPosition = transform.position;
 
         if (isFaxPaper)
@@ -77,11 +78,13 @@ public class PaperController : MonoBehaviour
         }
 
         SetTextInPaper();
+
+        HidePaper();
     }
 
     private void TakePaper(InputAction.CallbackContext obj)
     {
-        if (mainGame.isTakedItem)
+        if (mainGame.isTakedPaper)
         {
             return;
         }
@@ -89,7 +92,7 @@ public class PaperController : MonoBehaviour
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
             SetTextInPaperHand();
-            mainGame.isTakedItem = true;
+            mainGame.isTakedPaper = true;
             isTaked = true;
             defaultHand.SetActive(false);
             handWithPaper.SetActive(true);
@@ -106,15 +109,13 @@ public class PaperController : MonoBehaviour
                 mainGame.isTakedPaperOnFax = true;
             }
 
-            mainGame.ExecuteSetIsTakedItemWithDelay(false);
+            mainGame.ExecuteSetIsTakedPaperWithDelay(false);
             isTaked = false;
             handWithPaper.SetActive(false);
             defaultHand.SetActive(true);
             if (isFaxPaper)
             {
-                mainGame.isTakedItem = false;
-                paperOnTable?.ShowPaper();
-                Destroy(gameObject);
+                StartCoroutine(DropItemWithDelay());
             }
             else
             {
@@ -123,7 +124,17 @@ public class PaperController : MonoBehaviour
         }
     }
 
-    private void ShowPaper()
+    private IEnumerator DropItemWithDelay()
+    {
+        HidePaper();
+
+        yield return new WaitForSeconds(0.4F);
+        mainGame.isTakedPaper = false;
+        paperOnTable?.ShowPaper();
+        Destroy(gameObject);
+    }
+
+    public void ShowPaper()
     {
         transform.position = defaultPosition;
     }

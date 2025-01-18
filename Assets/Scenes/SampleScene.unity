@@ -22045,7 +22045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6700a23d13b8ec4f78e421d61274ee1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTakedItem: 0
+  isTakedPaper: 0
+  isTakedPhone: 0
   isFirstLoadGame: 0
   isQuestStarted: 0
   isTakedPaperOnFax: 0
@@ -42912,6 +42913,7 @@ MonoBehaviour:
   transceiverController: {fileID: 919132148180816617}
   faxController: {fileID: 9004968585800236469}
   paper: {fileID: 551104115}
+  paperOnTable: {fileID: 349106054}
   step1: {fileID: 8300000, guid: d2429a4bbe8d350b3a4a10f6d5797347, type: 3}
   step2: {fileID: 8300000, guid: abd524989f858f7a994deb5cc8e3bfd0, type: 3}
   step3: {fileID: 8300000, guid: 40d1fc694b0a593f38cb8b0c605f3641, type: 3}
