@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class ButtonPressController : MonoBehaviour
     [SerializeField] private Vector3 pressedPositionOffset = new Vector3(0, -0.01f, 0);
     [SerializeField] private float pressSpeed = 5f;
     [SerializeField] private TakedItem takedItem;
+    [SerializeField] public String buttonNumber = "0";
 
     private Vector3 initialLocalPosition;
     private Vector3 targetLocalPosition;

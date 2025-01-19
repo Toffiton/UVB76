@@ -2425,6 +2425,127 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1875435166}
   m_SourcePrefab: {fileID: 100100000, guid: a21cf375a551a033e93300ecee0c5724, type: 3}
+--- !u!1 &599064402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599064403}
+  - component: {fileID: 599064405}
+  - component: {fileID: 599064404}
+  m_Layer: 3
+  m_Name: Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &599064403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599064402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.00994, y: 0.00669, z: -0.00659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1183428328696796365}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &599064404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599064402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &599064405
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599064402}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 2
+  m_Color: {r: 0, g: 0.8584906, b: 0.041384067, a: 1}
+  m_Intensity: 0.01
+  m_Range: 0.02
+  m_SpotAngle: 174.20847
+  m_InnerSpotAngle: 44.804512
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0.001
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!1 &602272625
 GameObject:
   m_ObjectHideFlags: 0
@@ -22304,7 +22425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -177.60199, y: -28.419495}
+  m_AnchoredPosition: {x: -177.60205, y: -28.419434}
   m_SizeDelta: {x: 355.2063, y: 56.841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249815733
@@ -38826,6 +38947,127 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1955626741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2058636506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058636507}
+  - component: {fileID: 2058636509}
+  - component: {fileID: 2058636508}
+  m_Layer: 3
+  m_Name: Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058636507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058636506}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.00998, y: -0.00668, z: -0.00659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2772609210264125198}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &2058636508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058636506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &2058636509
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058636506}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 2
+  m_Color: {r: 0.5754717, g: 0, b: 0.052179452, a: 1}
+  m_Intensity: 0.01
+  m_Range: 0.02
+  m_SpotAngle: 174.20847
+  m_InnerSpotAngle: 44.804512
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0.001
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!1001 &2063311692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40237,7 +40479,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 13.312239, y: 30.000002, z: 30.000002}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 599064403}
   m_Father: {fileID: 7716224755815828711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1211967191827046116
@@ -40527,6 +40770,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 1654564733740032084}
+  buttonNumber: 3
   isButtonPressed: 0
 --- !u!114 &1654564733740032084
 MonoBehaviour:
@@ -40929,6 +41173,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.03, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 2105734739147412221}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!23 &2186933906120340088
 MeshRenderer:
@@ -41167,7 +41412,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 13.312239, y: 30.000002, z: 30.000002}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2058636507}
   m_Father: {fileID: 7716224755815828711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2781393379334431004
@@ -42048,6 +42294,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.03, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 4874917263318753968}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!1 &4956382974920533251
 GameObject:
@@ -42367,6 +42614,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 5730108515038515034}
+  buttonNumber: 7
   isButtonPressed: 0
 --- !u!114 &5730108515038515034
 MonoBehaviour:
@@ -42509,6 +42757,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 5881845104722008805}
+  buttonNumber: 2
   isButtonPressed: 0
 --- !u!114 &5881845104722008805
 MonoBehaviour:
@@ -42703,6 +42952,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 6176858087759280106}
+  buttonNumber: 6
   isButtonPressed: 0
 --- !u!114 &6176858087759280106
 MonoBehaviour:
@@ -42912,6 +43162,7 @@ MonoBehaviour:
   mainGame: {fileID: 1198469786}
   transceiverController: {fileID: 919132148180816617}
   faxController: {fileID: 9004968585800236469}
+  numericKeypadController: {fileID: 7716224755815828712}
   paper: {fileID: 551104115}
   paperOnTable: {fileID: 349106054}
   step1: {fileID: 8300000, guid: d2429a4bbe8d350b3a4a10f6d5797347, type: 3}
@@ -43120,6 +43371,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 6795084657188870393}
+  buttonNumber: 4
   isButtonPressed: 0
 --- !u!114 &6795084657188870393
 MonoBehaviour:
@@ -43430,6 +43682,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.03, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 6898477468384364916}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!1 &6944085690427250269
 GameObject:
@@ -43667,6 +43920,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 7262484966401280208}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!114 &7262484966401280208
 MonoBehaviour:
@@ -43867,6 +44121,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 7671678975401278551}
+  buttonNumber: 5
   isButtonPressed: 0
 --- !u!114 &7671678975401278551
 MonoBehaviour:
@@ -43982,6 +44237,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a44834d36f89d99bcae50588b5051c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayText: {fileID: 578094540}
+  oneButton: {fileID: 8270739101327411521}
+  twoButton: {fileID: 5881845104722008804}
+  threeButton: {fileID: 1654564733740032083}
+  fourStepButton: {fileID: 6795084657188870392}
+  fiveStepButton: {fileID: 7671678975401278550}
+  sixStepButton: {fileID: 6176858087759280105}
+  sevenStepButton: {fileID: 5730108515038515033}
+  eightStepButton: {fileID: 8906785251493296574}
+  nineStepButton: {fileID: 9011034430170942756}
+  zeroStepButton: {fileID: 8768488374795934895}
+  acceptStepButton: {fileID: 7262484966401280207}
+  cancelStepButton: {fileID: 9094733922673610511}
+  selectedCode: 
 --- !u!23 &7716867441813169381
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44115,6 +44384,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.03, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 7716867441813169382}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!4 &7838423706167692813
 Transform:
@@ -44242,6 +44512,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 8270739101327411522}
+  buttonNumber: 1
   isButtonPressed: 0
 --- !u!114 &8270739101327411522
 MonoBehaviour:
@@ -44487,6 +44758,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 8768488374795934896}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!114 &8768488374795934896
 MonoBehaviour:
@@ -44592,6 +44864,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 8906785251493296575}
+  buttonNumber: 8
   isButtonPressed: 0
 --- !u!114 &8906785251493296575
 MonoBehaviour:
@@ -44728,6 +45001,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 9011034430170942757}
+  buttonNumber: 9
   isButtonPressed: 0
 --- !u!114 &9011034430170942757
 MonoBehaviour:
@@ -44862,6 +45136,7 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0.03, y: 0, z: 0}
   pressSpeed: 7
   takedItem: {fileID: 9094733922673610512}
+  buttonNumber: 0
   isButtonPressed: 0
 --- !u!114 &9094733922673610512
 MonoBehaviour:

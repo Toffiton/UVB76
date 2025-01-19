@@ -6,6 +6,7 @@ public class PhoneSoundController : MonoBehaviour
     [SerializeField] private MainGame mainGame;
     [SerializeField] private TransceiverController transceiverController;
     [SerializeField] private FaxController faxController;
+    [SerializeField] private NumericKeypadController numericKeypadController;
     [Header("Бумага в факсе")]
     [SerializeField] private PaperController paper;
     [Header("Бумага на столе")]
@@ -28,8 +29,8 @@ public class PhoneSoundController : MonoBehaviour
 
     public IEnumerator StartCall()
     {
-        //yield return PlayClip(step1);
-        
+        yield return PlayClip(step1);
+
         yield return PlayClip(step2);
 
         // Шаг 3: Ждём, пока частота будет в рамках и удерживается 3 секунд
@@ -46,10 +47,12 @@ public class PhoneSoundController : MonoBehaviour
 
         yield return PlayClip(step4);
 
+        // Шаг 4: Ждём, когда игрок введёт код 1462
+        yield return WaitForInputCode(3f);
+
         yield return PlayClip(step5);
 
         yield return PlayClip(step6);
-
     }
 
     public void CancelCall()
@@ -98,6 +101,25 @@ public class PhoneSoundController : MonoBehaviour
         while (timer < duration)
         {
             if (paper.isTaked || paperOnTable.isTaked)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer = 0; // Сброс таймера, если вышли из диапазона
+            }
+
+            yield return null; // Ждём следующий кадр
+        }
+    }
+
+    private IEnumerator WaitForInputCode(float duration)
+    {
+        float timer = 0;
+
+        while (timer < duration)
+        {
+            if (numericKeypadController.selectedCode == "1462")
             {
                 timer += Time.deltaTime;
             }
