@@ -38196,7 +38196,7 @@ GameObject:
   - component: {fileID: 1931857365}
   - component: {fileID: 1931857364}
   - component: {fileID: 1931857363}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sofa_Chair (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38300,7 +38300,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931857358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d4f23fabb80ff894b2bee67a0bd9ac3, type: 3}
   m_Name: 
@@ -38312,7 +38312,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931857358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bc702b4f345fca949d4dda43e2c177b, type: 3}
   m_Name: 
@@ -38329,7 +38329,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931857358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 

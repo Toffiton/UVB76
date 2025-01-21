@@ -41,6 +41,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerLastPosition;
     private Quaternion playerLastRotation;
 
+    private bool isSitting = false;
+    private float sittingMinHorizontalAngle = -90f; // Угол влево
+    private float sittingMaxHorizontalAngle = 90f;  // Угол вправо
+    private float sittingMinVerticalAngle = -30f;   // Угол вниз
+    private float sittingMaxVerticalAngle = 30f;    // Угол вверх
+
     private void Awake()
     {
         isPlayerStopMovement = false;
@@ -110,11 +116,36 @@ public class PlayerController : MonoBehaviour
         float lookX = Mouse.current.delta.x.ReadValue() * lookSensitivity;
         float lookY = Mouse.current.delta.y.ReadValue() * lookSensitivity;
 
-        transform.Rotate(Vector3.up * lookX);
+        if (isSitting)
+        {
+            // Получаем текущий угол поворота игрока по оси Y
+            float currentYRotation = transform.eulerAngles.y;
 
-        _cameraVerticalRotation -= lookY;
-        _cameraVerticalRotation = Mathf.Clamp(_cameraVerticalRotation, -90f, 90f);
-        cameraTransform.localRotation = Quaternion.Euler(_cameraVerticalRotation, 0f, 0f);
+            // Приводим угол в диапазон -180..180
+            if (currentYRotation > 180f) currentYRotation -= 360f;
+
+            // Добавляем изменение угла
+            float targetYRotation = currentYRotation + lookX;
+
+            // Ограничиваем угол в пределах сидения
+            float clampedYRotation = Mathf.Clamp(targetYRotation, sittingMinHorizontalAngle, sittingMaxHorizontalAngle);
+
+            // Применяем ограниченный угол
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, clampedYRotation, transform.eulerAngles.z);
+
+            // Обновляем вертикальный угол камеры
+            _cameraVerticalRotation -= lookY;
+            _cameraVerticalRotation = Mathf.Clamp(_cameraVerticalRotation, sittingMinVerticalAngle, sittingMaxVerticalAngle);
+            cameraTransform.localRotation = Quaternion.Euler(_cameraVerticalRotation, 0f, 0f);
+        }
+        else
+        {
+            // Свободный режим камеры
+            transform.Rotate(Vector3.up * lookX);
+            _cameraVerticalRotation -= lookY;
+            _cameraVerticalRotation = Mathf.Clamp(_cameraVerticalRotation, -90f, 90f);
+            cameraTransform.localRotation = Quaternion.Euler(_cameraVerticalRotation, 0f, 0f);
+        }
     }
 
     private void HandleHandSwing()
@@ -176,15 +207,26 @@ public class PlayerController : MonoBehaviour
     public void SitOnChair(Vector3 playerPosition, Quaternion playerRotation)
     {
         isPlayerStopMovement = false;
+
         playerLastPosition = playerPosition;
         playerLastRotation = playerRotation;
 
         transform.position = playerPosition;
         transform.rotation = playerRotation;
+
+        float currentYRotation = transform.eulerAngles.y;
+        sittingMinHorizontalAngle = currentYRotation - 90f; // Ограничение влево
+        sittingMaxHorizontalAngle = currentYRotation + 90f; // Ограничение вправо
+        sittingMinVerticalAngle = -60f; // Ограничение вниз
+        sittingMaxVerticalAngle = 60f;  // Ограничение вверх
+
+        isSitting = true;
     }
 
     public void GetUpFromChair()
     {
+        isSitting = false;
+
         transform.position = playerLastPosition;
         transform.rotation = playerLastRotation;
 
