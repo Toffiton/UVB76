@@ -29,6 +29,7 @@ public class PhoneSoundController : MonoBehaviour
 
     public IEnumerator StartCall()
     {
+        mainGame.isPhoneCallStarted = true;
         yield return PlayClip(step1);
 
         yield return PlayClip(step2);
@@ -53,6 +54,11 @@ public class PhoneSoundController : MonoBehaviour
         yield return PlayClip(step5);
 
         yield return PlayClip(step6);
+
+        yield return WaitForInputCode(2f);
+
+        mainGame.isPhoneCallStarted = false;
+        mainGame.isPhoneCallEnded = true;
     }
 
     public void CancelCall()

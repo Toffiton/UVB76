@@ -19,7 +19,10 @@ public class TransceiverSoundController : MonoBehaviour
     
     private void Update()
     {
-        UpdateAudioEffects();
+        if (mainGame.isPhoneCallEnded)
+        {
+            UpdateAudioEffects();
+        }
     }
 
     private void UpdateAudioEffects()
@@ -38,7 +41,7 @@ public class TransceiverSoundController : MonoBehaviour
         {
             if (!speechSource.isPlaying)
             {
-                speechSource.UnPause(); // Продолжаем воспроизведение, если оно было на паузе
+                speechSource.Play(); // Продолжаем воспроизведение, если оно было на паузе
             }
             speechSource.volume = Mathf.Lerp(0.5f, 1f, 1 - normalizedDistance); // Увеличиваем громкость речи
         }

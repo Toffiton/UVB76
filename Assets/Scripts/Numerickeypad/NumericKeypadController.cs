@@ -1,11 +1,12 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class NumericKeypadController : MonoBehaviour
 {
+    [SerializeField] private MainGame mainGame;
     [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private TextMeshProUGUI infoText;
 
     [Header("Кнопки")]
     [SerializeField] private ButtonPressController oneButton;
@@ -122,11 +123,13 @@ public class NumericKeypadController : MonoBehaviour
                 {
                     case "11111":
                         StartCoroutine(SuccessMessage("Success"));
-                        Debug.Log("value is true: 11111");
+                        mainGame.isDayCompleted = true;
+                        StartCoroutine(ShowInfoText());
                         break;
                     case "22222":
                         StartCoroutine(SuccessMessage("Success"));
-                        Debug.Log("value is true: 22222");
+                        mainGame.isDayCompleted = true;
+                        StartCoroutine(ShowInfoText());
                         break;
                     default:
                         StartCoroutine(ErrorMessage("Error"));
@@ -209,6 +212,35 @@ public class NumericKeypadController : MonoBehaviour
         else if (!button.isButtonPressed)
         {
             buttonHandled[buttonIndex] = false;
+        }
+    }
+
+    private IEnumerator ShowInfoText()
+    {
+        string message1 = "Debug: На сегодня всё";
+        string message2 = "Debug: Пора спать";
+        string message3 = "Debug: Нужно переделать на звонок в релизе";
+
+        yield return StartCoroutine(TypeText(message1, 0.05f));
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(TypeText(message2, 0.05f));
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(TypeText(message3, 0.05f));
+        yield return new WaitForSeconds(2f);
+
+        infoText.text = "";
+    }
+
+    private IEnumerator TypeText(string message, float delay)
+    {
+        infoText.text = "";
+
+        foreach (char letter in message)
+        {
+            infoText.text += letter;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

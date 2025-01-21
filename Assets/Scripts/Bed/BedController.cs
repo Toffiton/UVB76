@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,6 +11,7 @@ public class BedController : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private Vector3 playerPosition;
     [SerializeField] private Quaternion playerRotation;
+    [SerializeField] private TextMeshProUGUI infoText;
 
     private bool isSiting = false;
 
@@ -37,6 +40,12 @@ public class BedController : MonoBehaviour
     {
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
+            if (!mainGame.isDayCompleted)
+            {
+                StartCoroutine(ShowInfoText());
+                return;
+            }
+            
             if (mainGame.GetCurrentDay() == 6)
             {
                 mainGame.SetCurrentDay(1);
@@ -48,6 +57,31 @@ public class BedController : MonoBehaviour
             player.SitOnChair(playerPosition, playerRotation);
             mainGame.SetCurrentDay(mainGame.GetCurrentDay() + 1);
             SceneManager.LoadScene(0);
+        }
+    }
+
+    private IEnumerator ShowInfoText()
+    {
+        string message1 = "Я пока не хочу спать";
+        string message2 = "Нужно поработать";
+
+        yield return StartCoroutine(TypeText(message1, 0.05f));
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(TypeText(message2, 0.05f));
+        yield return new WaitForSeconds(1f);
+
+        infoText.text = "";
+    }
+
+    private IEnumerator TypeText(string message, float delay)
+    {
+        infoText.text = "";
+
+        foreach (char letter in message)
+        {
+            infoText.text += letter;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

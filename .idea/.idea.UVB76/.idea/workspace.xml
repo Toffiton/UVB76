@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Player/Material.001.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Player/Material.001.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bed/BedController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bed/BedController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Numerickeypad/NumericKeypadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Numerickeypad/NumericKeypadController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Phone/PhoneSoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Phone/PhoneSoundController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverSoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverSoundController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -11,8 +11,13 @@ public class MainGame : MonoBehaviour
     public bool isTakedPhone;
     public bool isFirstLoadGame;
     public bool isQuestStarted = false;
+    
+    public bool isPhoneCallStarted = false;
+    public bool isPhoneCallEnded = false;
 
     public bool isTakedPaperOnFax = false;
+
+    public bool isDayCompleted = false;
 
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerSpawner playerSpawner;
@@ -23,6 +28,7 @@ public class MainGame : MonoBehaviour
     private int currentTextStep = 0;
     
     private Controls controls;
+    
 
     public void ExecuteSetIsTakedPaperWithDelay(bool isTakedItem)
     {
