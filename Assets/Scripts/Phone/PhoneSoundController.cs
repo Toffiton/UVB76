@@ -57,6 +57,7 @@ public class PhoneSoundController : MonoBehaviour
 
         yield return WaitForInputCode(2f);
 
+        PhonePrefs.SetPhoneCallIsListenById(mainGame.GetCurrentDay());
         mainGame.isPhoneCallStarted = false;
         mainGame.isPhoneCallEnded = true;
     }

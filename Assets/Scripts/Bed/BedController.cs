@@ -15,6 +15,8 @@ public class BedController : MonoBehaviour
 
     private bool isSiting = false;
 
+    private bool textPlayed = false;
+
     private Controls controls;
 
     private void Awake()
@@ -42,7 +44,10 @@ public class BedController : MonoBehaviour
         {
             if (!mainGame.isDayCompleted)
             {
-                StartCoroutine(ShowInfoText());
+                if (!textPlayed)
+                {
+                    StartCoroutine(ShowInfoText());
+                }
                 return;
             }
             
@@ -62,6 +67,7 @@ public class BedController : MonoBehaviour
 
     private IEnumerator ShowInfoText()
     {
+        textPlayed = true;
         string message1 = "Я пока не хочу спать";
         string message2 = "Нужно поработать";
 
@@ -71,6 +77,7 @@ public class BedController : MonoBehaviour
         yield return StartCoroutine(TypeText(message2, 0.05f));
         yield return new WaitForSeconds(1f);
 
+        textPlayed = false;
         infoText.text = "";
     }
 

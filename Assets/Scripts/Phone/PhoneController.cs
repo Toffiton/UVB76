@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -60,8 +61,9 @@ public class PhoneController : MonoBehaviour
             handWithPhone.SetActive(true);
             if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()) && mainGame.isQuestStarted)
             {
+                StopAllCoroutines();
                 StartCoroutine(phoneSoundController.StartCall());
-                PhonePrefs.SetPhoneCallIsListenById(mainGame.GetCurrentDay());
+                mainGame.isQuestStarted = false;
             }
             HidePhone();
         }
@@ -79,7 +81,23 @@ public class PhoneController : MonoBehaviour
             defaultHand.SetActive(true);
 
             ShowPhone();
+
+            StopAllCoroutines();
+            StartCoroutine(CheckPhoneCallIsEnd());
         }
+    }
+
+    private IEnumerator CheckPhoneCallIsEnd()
+    {
+        yield return new WaitForSeconds(2F);
+
+        if (mainGame.isPhoneCallStarted)
+        {
+            mainGame.PlayPhoneSound();
+            mainGame.isQuestStarted = true;
+        }
+
+        yield return null;
     }
 
     private void ShowPhone()

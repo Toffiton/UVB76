@@ -1197,7 +1197,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &376986942
 Transform:
@@ -3906,7 +3906,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &838526939
 Transform:
@@ -22918,7 +22918,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1287294026
 Transform:
@@ -39533,7 +39533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244179243246094082, guid: 01707ebbae796a86db580dcc08ffc0f4, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8538148170598460373, guid: 01707ebbae796a86db580dcc08ffc0f4, type: 3}
       propertyPath: paper
