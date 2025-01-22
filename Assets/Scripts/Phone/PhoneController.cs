@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -45,6 +46,14 @@ public class PhoneController : MonoBehaviour
         defaultPosition = transform.position;
     }
 
+    private void Update()
+    {
+        if (mainGame.isPhoneCallEnded)
+        {
+            DropCall(new InputAction.CallbackContext());
+        }
+    }
+
     private void TakeCall(InputAction.CallbackContext obj)
     {
         if (mainGame.isTakedPhone)
@@ -59,11 +68,9 @@ public class PhoneController : MonoBehaviour
             isTaked = true;
             defaultHand.SetActive(false);
             handWithPhone.SetActive(true);
-            if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()) && mainGame.isQuestStarted)
+            if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()))
             {
-                StopAllCoroutines();
                 StartCoroutine(phoneSoundController.StartCall());
-                mainGame.isQuestStarted = false;
             }
             HidePhone();
         }
@@ -71,7 +78,7 @@ public class PhoneController : MonoBehaviour
 
     private void DropCall(InputAction.CallbackContext obj)
     {
-        if (isTaked && !mainGame.isTakedPaper)
+        if (isTaked && !mainGame.isTakedPaper && !mainGame.isPhoneCallStarted)
         {
             StartCoroutine(mainGame.SetIsTakedPaperWithDelay(false));
             isTaked = false;
@@ -81,23 +88,7 @@ public class PhoneController : MonoBehaviour
             defaultHand.SetActive(true);
 
             ShowPhone();
-
-            StopAllCoroutines();
-            StartCoroutine(CheckPhoneCallIsEnd());
         }
-    }
-
-    private IEnumerator CheckPhoneCallIsEnd()
-    {
-        yield return new WaitForSeconds(2F);
-
-        if (mainGame.isPhoneCallStarted)
-        {
-            mainGame.PlayPhoneSound();
-            mainGame.isQuestStarted = true;
-        }
-
-        yield return null;
     }
 
     private void ShowPhone()

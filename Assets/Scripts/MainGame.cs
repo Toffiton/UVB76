@@ -10,7 +10,6 @@ public class MainGame : MonoBehaviour
     public bool isTakedPaper;
     public bool isTakedPhone;
     public bool isFirstLoadGame;
-    public bool isQuestStarted = false;
     
     public bool isPhoneCallStarted = false;
     public bool isPhoneCallEnded = false;
