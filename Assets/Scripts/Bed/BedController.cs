@@ -21,9 +21,13 @@ public class BedController : MonoBehaviour
     [SerializeField] private MainGame mainGame;
     [SerializeField] private TakedItem takedItem;
     [SerializeField] private PlayerController player;
+    [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private Vector3 playerPosition;
     [SerializeField] private Quaternion playerRotation;
     [SerializeField] private TextMeshProUGUI infoText;
+
+    private Vector3 initialCameraPosition;
+    private Quaternion initialCameraRotation;
 
     private bool isSleeping = false;
 
@@ -70,7 +74,7 @@ public class BedController : MonoBehaviour
                 return;
             }
 
-            StartSleepTransition();
+            StartCoroutine(StartSleepTransition());
         }
     }
 
@@ -101,12 +105,29 @@ public class BedController : MonoBehaviour
         }
     }
 
-    public void StartSleepTransition()
+    public IEnumerator StartSleepTransition()
     {
         if (!isSleeping)
         {
-            StartCoroutine(SleepCoroutine());
+            initialCameraPosition = playerCamera.position;
+            initialCameraRotation = playerCamera.rotation;
+
+            if (true)
+            {
+                yield return StartCoroutine(SleepToSleepLevelTransition());
+            }
+            else
+            {
+                yield return StartCoroutine(DefaultSleepTransition());
+            }
         }
+    }
+
+    public IEnumerator DefaultSleepTransition()
+    {
+        yield return StartCoroutine(SleepCoroutine());
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(WakeupCoroutine());
     }
 
     private IEnumerator SleepCoroutine()
@@ -114,21 +135,58 @@ public class BedController : MonoBehaviour
         isSleeping = true;
         player.isPlayerStopLooking = true;
 
-        Vector3 initialCameraPosition = playerCamera.position;
-        Quaternion initialCameraRotation = playerCamera.rotation;
-
         yield return SmoothCameraTransition(playerCamera, bedCamera);
 
         yield return FadeScreen(0f, 1f);
+    }
 
-        yield return new WaitForSeconds(2f);
-
+    public IEnumerator WakeupCoroutine()
+    {
         yield return FadeScreen(1f, 0f);
 
         yield return SmoothCameraTransition(bedCamera, playerCamera, initialCameraPosition, initialCameraRotation);
 
         isSleeping = false;
         player.isPlayerStopLooking = false;
+        mainGame.NotifyAboutNextDay();
+    }
+    
+    public IEnumerator SleepToSleepLevelTransition()
+    {
+        yield return StartCoroutine(SleepCoroutine());
+
+        yield return SmoothCameraTransition(bedCamera, playerCamera, initialCameraPosition, initialCameraRotation);
+        playerSpawner.SpawnPlayerOnSleepPosition();
+
+        yield return new WaitForSeconds(1f);
+
+        yield return FadeScreen(1f, 0f);
+
+        isSleeping = false;
+        player.isPlayerStopLooking = false;
+    }
+
+    public IEnumerator ExitSleepLevelTransition()
+    {
+        player.isPlayerStopLooking = false;
+        player.isPlayerStopMovement = false;
+
+        yield return FadeScreen(0f, 1f);
+
+        playerSpawner.SpawnPlayerOnDefaultPosition();
+        
+        playerCamera.position = bedCamera.position;
+        playerCamera.rotation = bedCamera.rotation;
+
+        yield return new WaitForSeconds(1f);
+
+        yield return FadeScreen(1f, 0f);
+
+        yield return SmoothCameraTransition(bedCamera, playerCamera, initialCameraPosition, initialCameraRotation);
+
+        isSleeping = false;
+        player.isPlayerStopMovement = true;
+        player.isPlayerStopLooking = true;
         mainGame.NotifyAboutNextDay();
     }
 

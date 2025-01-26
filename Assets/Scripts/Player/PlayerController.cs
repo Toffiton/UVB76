@@ -240,4 +240,36 @@ public class PlayerController : MonoBehaviour
 
         isPlayerStopMovement = true;
     }
+
+    public void ResumeMovement()
+    {
+        isPlayerStopMovement = false;
+    }
+
+    public void ResumeLooking()
+    {
+        isPlayerStopLooking = false;
+    }
+
+    public void ResumeMovementAndLooking()
+    {
+        isPlayerStopMovement = false;
+        isPlayerStopLooking = false;
+    }
+
+    public void StopMovement()
+    {
+        isPlayerStopMovement = true;
+    }
+
+    public void StopLooking()
+    {
+        isPlayerStopLooking = true;
+    }
+
+    public void StopMovementAndLooking()
+    {
+        isPlayerStopMovement = true;
+        isPlayerStopLooking = true;
+    }
 }

@@ -5,6 +5,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform defaultPosition;
+    [SerializeField] private Transform inSleepPosition;
 
     public void SpawnPlayerOnStartPosition()
     {
@@ -14,5 +15,10 @@ public class PlayerSpawner : MonoBehaviour
     public void SpawnPlayerOnDefaultPosition()
     {
         player.transform.position = defaultPosition.position;
+    }
+
+    public void SpawnPlayerOnSleepPosition()
+    {
+        player.transform.position = inSleepPosition.position;
     }
 }
