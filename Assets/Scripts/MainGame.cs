@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class MainGame : MonoBehaviour
 {
@@ -26,6 +25,8 @@ public class MainGame : MonoBehaviour
 
     private int currentTextStep = 0;
     
+    public static event Action<int> OnDayChanged;
+    
     private Controls controls;
     
 
@@ -37,7 +38,7 @@ public class MainGame : MonoBehaviour
     public IEnumerator SetIsTakedPaperWithDelay(bool isTakedItem)
     {
         yield return new WaitForSeconds(0.1f);
-        this.isTakedPaper = isTakedItem;
+        isTakedPaper = isTakedItem;
     }
 
     public void ExecuteSetIsTakedPhoneWithDelay(bool isTakedItem)
@@ -48,7 +49,7 @@ public class MainGame : MonoBehaviour
     public IEnumerator SetIsTakedPhoneWithDelay(bool isTakedItem)
     {
         yield return new WaitForSeconds(0.1f);
-        this.isTakedPhone = isTakedItem;
+        isTakedPhone = isTakedItem;
     }
 
     private void Awake()
@@ -111,7 +112,7 @@ public class MainGame : MonoBehaviour
 
                 break;
             case 1:
-                informationText.text = "UVB-76";
+                informationText.text = "BKVA-67";
 
                 break;
             case 2:
@@ -128,6 +129,18 @@ public class MainGame : MonoBehaviour
         }
         
         currentTextStep += 1;
+    }
+
+    public void NotifyAboutNextDay()
+    {
+        isDayCompleted = false;
+
+        int currentDay = GetCurrentDay();
+        int nextDay = currentDay + 1;
+
+        SetCurrentDay(nextDay);
+
+        OnDayChanged?.Invoke(nextDay);
     }
 
     public int GetCurrentDay()

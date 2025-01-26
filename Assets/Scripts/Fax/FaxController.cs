@@ -16,6 +16,7 @@ public class FaxController : MonoBehaviour
 
     private IEnumerator MovePaper()
     {
+        paper.canTakedPaper = false;
         float elapsedTime = 0f; // Время, прошедшее с начала движения
 
         // Устанавливаем начальную позицию бумаги
@@ -37,5 +38,6 @@ public class FaxController : MonoBehaviour
 
         // Устанавливаем конечную позицию точно, чтобы избежать погрешностей
         paper.transform.position = endPoint.position;
+        paper.canTakedPaper = true;
     }
 }

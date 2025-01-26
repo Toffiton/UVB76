@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool _isRunning = false;
     private bool _isJumping = false;
     public bool isPlayerStopMovement = true;
+    public bool isPlayerStopLooking = true;
     private Vector3 initialHandPosition;
     private Vector3 lastHandPosition;
 
@@ -50,6 +51,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         isPlayerStopMovement = false;
+        isPlayerStopLooking = false;
+
         _controls = new Controls();
         _characterController = GetComponent<CharacterController>();
         initialHandPosition = hands.localPosition;
@@ -113,6 +116,11 @@ public class PlayerController : MonoBehaviour
 
     private void HandleLook()
     {
+        if (isPlayerStopLooking)
+        {
+            return;
+        }
+
         float lookX = Mouse.current.delta.x.ReadValue() * lookSensitivity;
         float lookY = Mouse.current.delta.y.ReadValue() * lookSensitivity;
 

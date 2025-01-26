@@ -24,6 +24,22 @@ public class TransceiverController : MonoBehaviour
     private bool leftStepHandled = false;
     private bool rightStepHandled = false;
 
+    private void OnEnable()
+    {
+        MainGame.OnDayChanged += HandleDayChanged;
+    }
+
+    private void OnDisable()
+    {
+        MainGame.OnDayChanged -= HandleDayChanged;
+    }
+
+    private void HandleDayChanged(int newDay)
+    {
+        frequency = 4000;
+        UpdateFrequencyText();
+    }
+
     void Update()
     {
         HandleButtonPress(1, rightButton);
@@ -73,6 +89,6 @@ public class TransceiverController : MonoBehaviour
 
     private void UpdateFrequencyText()
     {
-        frequencyText.text = frequency.ToString();
+        frequencyText.text = frequency + " МГц";
     }
 }

@@ -14,11 +14,14 @@ public class PaperController : MonoBehaviour
     [SerializeField] private GameObject handWithPaper;
     [SerializeField] private TextMeshProUGUI paperText;
     [SerializeField] private TextMeshProUGUI paperTextInHead;
+    [SerializeField] private TextMeshProUGUI infoText;
 
     private PaperTypes _paperType;
     private Vector3 defaultPosition;
 
     public bool isTaked = false;
+    public bool canTakedPaper = true;
+    private bool textPlayed = false;
 
     private Controls controls;
 
@@ -91,6 +94,12 @@ public class PaperController : MonoBehaviour
 
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
+            if (!canTakedPaper && !textPlayed)
+            {
+                StartCoroutine(ShowInfoText());
+                return;
+            }
+
             SetTextInPaperHand();
             mainGame.isTakedPaper = true;
             isTaked = true;
@@ -191,6 +200,29 @@ public class PaperController : MonoBehaviour
             case PaperTypes.SixthDay:
                 paperTextInHead.text = "<size=0.015><b>День 6. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Михаил Наталья\n2 — Николай Татьяна\n3 — Олег Анна\n4 — Павел Марина\n5 — Роман Оксана\n6 — Станислав Валерия\n7 — Тимофей Юлия\n8 — Фёдор Светлана\n9 — Юрий Виктория\n0 — Артём Ирина</size></line-height>";
                 break;
+        }
+    }
+    
+    private IEnumerator ShowInfoText()
+    {
+        textPlayed = true;
+        string message = "Нужно подождать";
+
+        yield return StartCoroutine(TypeText(message, 0.05f));
+        yield return new WaitForSeconds(1f);
+
+        textPlayed = false;
+        infoText.text = "";
+    }
+
+    private IEnumerator TypeText(string message, float delay)
+    {
+        infoText.text = "";
+
+        foreach (char letter in message)
+        {
+            infoText.text += letter;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

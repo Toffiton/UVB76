@@ -36,7 +36,6 @@ public class NumericKeypadController : MonoBehaviour
 
     void Update()
     {
-        // Проверяем все кнопки независимо от состояния анимации
         HandleButtonPress(oneButton, 0);
         HandleButtonPress(twoButton, 1);
         HandleButtonPress(threeButton, 2);
