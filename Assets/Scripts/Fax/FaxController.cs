@@ -8,15 +8,21 @@ public class FaxController : MonoBehaviour
     [SerializeField] private Transform endPoint;   // Конечная точка
     [SerializeField] private float moveDuration = 2f; // Время движения в секундах
 
+    private bool isPrintable = false;
+
     public void PrintPaper()
     {
-        paper.ShowPaper();
-        StartCoroutine(MovePaper());
+        if (!isPrintable)
+        {
+            isPrintable = true;
+            paper.canTakedPaper = false;
+            paper.ShowPaper();
+            StartCoroutine(MovePaper());
+        }
     }
 
     private IEnumerator MovePaper()
     {
-        paper.canTakedPaper = false;
         float elapsedTime = 0f; // Время, прошедшее с начала движения
 
         // Устанавливаем начальную позицию бумаги
@@ -38,6 +44,9 @@ public class FaxController : MonoBehaviour
 
         // Устанавливаем конечную позицию точно, чтобы избежать погрешностей
         paper.transform.position = endPoint.position;
+        isPrintable = false;
+        
+        yield return new WaitForSeconds(1f);
         paper.canTakedPaper = true;
     }
 }

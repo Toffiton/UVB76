@@ -94,7 +94,7 @@ public class PaperController : MonoBehaviour
 
         if (takedItem.GetPlayerInRange() && takedItem.GetItemIsSelected())
         {
-            if (!canTakedPaper && !textPlayed)
+            if (isFaxPaper && !canTakedPaper && !textPlayed)
             {
                 StartCoroutine(ShowInfoText());
                 return;

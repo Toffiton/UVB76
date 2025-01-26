@@ -30,7 +30,7 @@ public class PhoneSoundController : MonoBehaviour
     public IEnumerator StartCall()
     {
         mainGame.isPhoneCallStarted = true;
-        yield return PlayClip(step1);
+        //yield return PlayClip(step1);
 
         yield return PlayClip(step2);
 
