@@ -33,9 +33,8 @@ public class PlayerController : MonoBehaviour
     private float _gravity = 9.8f;
     private float _cameraVerticalRotation = 0f;
     private bool _isRunning = false;
-    private bool _isJumping = false;
-    public bool isPlayerStopMovement = true;
-    public bool isPlayerStopLooking = true;
+    private bool isPlayerStopMovement = true;
+    private bool isPlayerStopLooking = true;
     private Vector3 initialHandPosition;
     private Vector3 lastHandPosition;
 
@@ -50,8 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        isPlayerStopMovement = false;
-        isPlayerStopLooking = false;
+        StopMovementAndLooking();
 
         _controls = new Controls();
         _characterController = GetComponent<CharacterController>();
@@ -61,8 +59,6 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _controls.Main.Enable();
-        //_controls.Main.Jump.performed += OnJump;
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -78,7 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleLook();
         HandleHandSwing();
-        if (isPlayerStopMovement)
+        if (!isPlayerStopMovement)
         {
             HandleMovement();
         }
@@ -95,15 +91,7 @@ public class PlayerController : MonoBehaviour
 
         if (_characterController.isGrounded)
         {
-            if (_isJumping)
-            {
-                _verticalSpeed = jumpForce;
-                _isJumping = false;
-            }
-            else
-            {
-                _verticalSpeed = -1f;
-            }
+            _verticalSpeed = -1f;
         }
         else
         {
@@ -170,7 +158,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // Устанавливаем параметры для разных состояний
-        if (_characterController.velocity.magnitude < 0.1f)
+        if (
+            _characterController.velocity.magnitude < 0.1f
+            || isPlayerStopLooking
+            || isPlayerStopMovement
+        )
         {
             swingIntensity = idleSwingIntensity;
             swingSpeed = idleSwingSpeed;
@@ -204,17 +196,9 @@ public class PlayerController : MonoBehaviour
         lastHandPosition = hands.localPosition;
     }
 
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        if (_characterController.isGrounded)
-        {
-            _isJumping = true;
-        }
-    }
-
     public void SitOnChair(Vector3 playerPosition, Quaternion playerRotation)
     {
-        isPlayerStopMovement = false;
+        StopMovement();
 
         playerLastPosition = playerPosition;
         playerLastRotation = playerRotation;
@@ -238,7 +222,7 @@ public class PlayerController : MonoBehaviour
         transform.position = playerLastPosition;
         transform.rotation = playerLastRotation;
 
-        isPlayerStopMovement = true;
+        ResumeMovement();
     }
 
     public void ResumeMovement()

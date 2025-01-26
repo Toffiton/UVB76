@@ -29,6 +29,9 @@ public class BedController : MonoBehaviour
     private Vector3 initialCameraPosition;
     private Quaternion initialCameraRotation;
 
+    private Vector3 initialPlayerPosition;
+    private Quaternion initialPlayerRotation;
+
     private bool isSleeping = false;
 
     private bool textPlayed = false;
@@ -109,8 +112,13 @@ public class BedController : MonoBehaviour
     {
         if (!isSleeping)
         {
+            player.StopMovementAndLooking();
+
             initialCameraPosition = playerCamera.position;
             initialCameraRotation = playerCamera.rotation;
+
+            initialPlayerPosition = player.gameObject.transform.position;
+            initialPlayerRotation = player.gameObject.transform.rotation;
 
             if (true)
             {
@@ -133,7 +141,7 @@ public class BedController : MonoBehaviour
     private IEnumerator SleepCoroutine()
     {
         isSleeping = true;
-        player.isPlayerStopLooking = true;
+        player.StopMovementAndLooking();
 
         yield return SmoothCameraTransition(playerCamera, bedCamera);
 
@@ -147,11 +155,11 @@ public class BedController : MonoBehaviour
         yield return SmoothCameraTransition(bedCamera, playerCamera, initialCameraPosition, initialCameraRotation);
 
         isSleeping = false;
-        player.isPlayerStopLooking = false;
+        player.ResumeMovementAndLooking();
         mainGame.NotifyAboutNextDay();
     }
     
-    public IEnumerator SleepToSleepLevelTransition()
+    private IEnumerator SleepToSleepLevelTransition()
     {
         yield return StartCoroutine(SleepCoroutine());
 
@@ -163,18 +171,22 @@ public class BedController : MonoBehaviour
         yield return FadeScreen(1f, 0f);
 
         isSleeping = false;
-        player.isPlayerStopLooking = false;
+        player.ResumeMovementAndLooking();
     }
 
     public IEnumerator ExitSleepLevelTransition()
     {
-        player.isPlayerStopLooking = false;
-        player.isPlayerStopMovement = false;
+        isSleeping = true;
+
+        player.StopMovementAndLooking();
 
         yield return FadeScreen(0f, 1f);
 
-        playerSpawner.SpawnPlayerOnDefaultPosition();
-        
+        playerSpawner.SpawnPlayerToCustomPosition(
+            initialPlayerPosition,
+            initialPlayerRotation
+        );
+
         playerCamera.position = bedCamera.position;
         playerCamera.rotation = bedCamera.rotation;
 
@@ -182,11 +194,15 @@ public class BedController : MonoBehaviour
 
         yield return FadeScreen(1f, 0f);
 
-        yield return SmoothCameraTransition(bedCamera, playerCamera, initialCameraPosition, initialCameraRotation);
+        yield return SmoothCameraTransition(
+            bedCamera,
+            playerCamera,
+            initialCameraPosition,
+            initialCameraRotation
+        );
 
         isSleeping = false;
-        player.isPlayerStopMovement = true;
-        player.isPlayerStopLooking = true;
+        player.ResumeMovementAndLooking();
         mainGame.NotifyAboutNextDay();
     }
 

@@ -21,4 +21,10 @@ public class PlayerSpawner : MonoBehaviour
     {
         player.transform.position = inSleepPosition.position;
     }
+
+    public void SpawnPlayerToCustomPosition(Vector3 position, Quaternion rotation)
+    {
+        player.transform.position = position;
+        player.transform.rotation = rotation;
+    }
 }

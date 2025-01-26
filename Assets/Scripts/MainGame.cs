@@ -79,7 +79,7 @@ public class MainGame : MonoBehaviour
         else
         {
             playerSpawner.SpawnPlayerOnDefaultPosition();
-            player.isPlayerStopMovement = true;
+            player.ResumeMovementAndLooking();
             informationBlock.SetActive(false);
         }
     }
@@ -122,7 +122,7 @@ public class MainGame : MonoBehaviour
             case 3:
                 informationBlock.SetActive(false);
                 playerSpawner.SpawnPlayerOnStartPosition();
-                player.isPlayerStopMovement = true;
+                player.ResumeMovementAndLooking();
                 SetIsFirstLoadGameFalse();
 
                 break;
