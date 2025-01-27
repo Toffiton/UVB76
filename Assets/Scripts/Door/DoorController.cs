@@ -8,6 +8,9 @@ public class DoorController : MonoBehaviour
     [SerializeField] private TakedItem takedItem;
     [SerializeField] private float openAngle = 90f;
     [SerializeField] private float speed = 2f;
+    [SerializeField] private AudioSource sound;
+    [SerializeField] private AudioClip openDoorSound;
+    [SerializeField] private AudioClip closeDoorSound;
 
     private bool isDoorOpen = false;
 
@@ -23,6 +26,7 @@ public class DoorController : MonoBehaviour
         controls.Main.Enable();
         controls.Main.Interact.performed += HandleInteract;
         controls.Main.LKM.performed += HandleInteract;
+        MainGame.OnDayChanged += HandleDayChanged;
     }
 
     private void OnDisable()
@@ -30,6 +34,13 @@ public class DoorController : MonoBehaviour
         controls.Main.Disable();
         controls.Main.Interact.performed -= HandleInteract;
         controls.Main.LKM.performed -= HandleInteract;
+        MainGame.OnDayChanged -= HandleDayChanged;
+    }
+
+    private void HandleDayChanged(int newDay)
+    {
+        isDoorOpen = false;
+        doorHinge.localEulerAngles = new Vector3(0f, 0f, 0f);
     }
 
     private void HandleInteract(InputAction.CallbackContext context)
@@ -44,6 +55,20 @@ public class DoorController : MonoBehaviour
     {
         StopAllCoroutines();
         float targetAngle = isDoorOpen ? 0f : openAngle;
+
+        if (isDoorOpen)
+        {
+            sound.clip = openDoorSound;
+            sound.Stop();
+            sound.Play();
+        }
+        else
+        {
+            sound.clip = closeDoorSound;
+            sound.Stop();
+            sound.Play();
+        }
+
         StartCoroutine(RotateDoor(targetAngle));
         isDoorOpen = !isDoorOpen;
     }

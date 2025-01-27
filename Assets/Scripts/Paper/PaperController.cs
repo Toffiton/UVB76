@@ -16,7 +16,6 @@ public class PaperController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI paperTextInHead;
     [SerializeField] private TextMeshProUGUI infoText;
 
-    private PaperTypes _paperType;
     private Vector3 defaultPosition;
 
     public bool isTaked = false;
@@ -50,25 +49,6 @@ public class PaperController : MonoBehaviour
 
     private void Start()
     {
-        switch (mainGame.GetCurrentDay())
-        {
-            case 1:
-                _paperType = PaperTypes.FirstDay;
-                break;
-            case 2:
-                _paperType = PaperTypes.SecondDay;
-                break;
-            case 3:
-                _paperType = PaperTypes.ThirdDay;
-                break;
-            case 4:
-                _paperType = PaperTypes.FourthDay;
-                break;
-            case 5:
-                _paperType = PaperTypes.FifthDay;
-                break;
-        }
-
         defaultPosition = transform.position;
 
         if (isFaxPaper)
@@ -78,6 +58,11 @@ public class PaperController : MonoBehaviour
         else
         {
             HidePaper();
+        }
+
+        if (!isFaxPaper)
+        {
+            StartCoroutine(ShowPaperWithDelay());
         }
 
         SetTextInPaper();
@@ -148,6 +133,19 @@ public class PaperController : MonoBehaviour
         transform.position = defaultPosition;
     }
 
+    public IEnumerator ShowPaperWithDelay()
+    {
+        if (!mainGame.isPhoneCallEnded)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.4F);
+
+        transform.position = defaultPosition;
+
+        yield return null;
+    }
+
     private void HidePaper()
     {
         transform.transform.position = new Vector3(0, 0, 0);
@@ -157,22 +155,22 @@ public class PaperController : MonoBehaviour
     {
         switch (mainGame.GetCurrentDay())
         {
-            case (int)PaperTypes.FirstDay:
-                paperText.text = "<size=0.015><b>День 1. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Николай Светлана\n2 — Ольга Анна\n3 — Роман Павел\n4 — Василий Дмитрий\n5 — Сергей Елена\n6 — Иван Мария\n7 — Ольга Тамара\n8 — Григорий Юлия\n9 — Александр Петя\n0 — Артём Анатолий</size></line-height>";
+            case 1:
+                paperText.text = "<size=0.015><b>День 1. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Николай Женя\n2 — Татьяна Ольга\n3 — 34214\n4 — Татьяна Иван\n5 — 76456\n6 — Иван Мария\n7 — Ольга Тамара\n8 — 35645\n9 — Анна Ульяна\n0 — 82642</size></line-height>";
                 break;
-            case (int)PaperTypes.SecondDay:
+            case 2:
                 paperText.text = "<size=0.015><b>День 2. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Ирина\n2 — Борис Наталья\n3 — Виктор Ольга\n4 — Григорий Анна\n5 — Дмитрий Юлия\n6 — Евгений Елена\n7 — Иван Светлана\n8 — Константин Мария\n9 — Лев Анастасия\n0 — Михаил Татьяна</size></line-height>";
                 break;
-            case (int)PaperTypes.ThirdDay:
+            case 3:
                 paperText.text = "<size=0.015><b>День 3. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Павел Надежда\n2 — Роман Валерия\n3 — Станислав Наталья\n4 — Тимофей Елена\n5 — Фёдор Ольга\n6 — Юрий Анна\n7 — Артём Светлана\n8 — Владислав Мария\n9 — Георгий Татьяна\n0 — Василий Анастасия</size></line-height>";
                 break;
-            case (int)PaperTypes.FourthDay:
+            case 4:
                 paperText.text = "<size=0.015><b>День 4. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Оксана\n2 — Борис Виктория\n3 — Владимир Елена\n4 — Дмитрий Ирина\n5 — Евгений Татьяна\n6 — Игорь Наталья\n7 — Константин Светлана\n8 — Николай Марина\n9 — Олег Анна\n0 — Пётр Надежда</size></line-height>";
                 break;
-            case (int)PaperTypes.FifthDay:
+            case 5:
                 paperText.text = "<size=0.015><b>День 5. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Сергей Валерия\n2 — Тимофей Юлия\n3 — Фёдор Марина\n4 — Юрий Оксана\n5 — Артём Анастасия\n6 — Владислав Ирина\n7 — Георгий Виктория\n8 — Иван Елена\n9 — Константин Ольга\n0 — Лев Светлана</size></line-height>";
                 break;
-            case (int)PaperTypes.SixthDay:
+            case 6:
                 paperText.text = "<size=0.015><b>День 6. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Михаил Наталья\n2 — Николай Татьяна\n3 — Олег Анна\n4 — Павел Марина\n5 — Роман Оксана\n6 — Станислав Валерия\n7 — Тимофей Юлия\n8 — Фёдор Светлана\n9 — Юрий Виктория\n0 — Артём Ирина</size></line-height>";
                 break;
         }
@@ -180,24 +178,24 @@ public class PaperController : MonoBehaviour
 
     private void SetTextInPaperHand()
     {
-        switch (_paperType)
+        switch (mainGame.GetCurrentDay())
         {
-            case PaperTypes.FirstDay:
-                paperTextInHead.text = "<size=0.015><b>День 1. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Николай Светлана\n2 — Ольга Анна\n3 — Роман Павел\n4 — Василий Дмитрий\n5 — Сергей Елена\n6 — Иван Мария\n7 — Ольга Тамара\n8 — Григорий Юлия\n9 — Александр Петя\n0 — Артём Анатолий</size></line-height>";
+            case 1:
+                paperTextInHead.text = "<size=0.015><b>День 1. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Николай Женя\n2 — Татьяна Ольга\n3 — 34214\n4 — Татьяна Иван\n5 — 76456\n6 — Иван Мария\n7 — Ольга Тамара\n8 — 35645\n9 — Анна Ульяна\n0 — 82642</size></line-height>";
                 break;
-            case PaperTypes.SecondDay:
+            case 2:
                 paperTextInHead.text = "<size=0.015><b>День 2. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Ирина\n2 — Борис Наталья\n3 — Виктор Ольга\n4 — Григорий Анна\n5 — Дмитрий Юлия\n6 — Евгений Елена\n7 — Иван Светлана\n8 — Константин Мария\n9 — Лев Анастасия\n0 — Михаил Татьяна</size></line-height>";
                 break;
-            case PaperTypes.ThirdDay:
+            case 3:
                 paperTextInHead.text = "<size=0.015><b>День 3. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Павел Надежда\n2 — Роман Валерия\n3 — Станислав Наталья\n4 — Тимофей Елена\n5 — Фёдор Ольга\n6 — Юрий Анна\n7 — Артём Светлана\n8 — Владислав Мария\n9 — Георгий Татьяна\n0 — Василий Анастасия</size></line-height>";
                 break;
-            case PaperTypes.FourthDay:
+            case 4:
                 paperTextInHead.text = "<size=0.015><b>День 4. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Алексей Оксана\n2 — Борис Виктория\n3 — Владимир Елена\n4 — Дмитрий Ирина\n5 — Евгений Татьяна\n6 — Игорь Наталья\n7 — Константин Светлана\n8 — Николай Марина\n9 — Олег Анна\n0 — Пётр Надежда</size></line-height>";
                 break;
-            case PaperTypes.FifthDay:
+            case 5:
                 paperTextInHead.text = "<size=0.015><b>День 5. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Сергей Валерия\n2 — Тимофей Юлия\n3 — Фёдор Марина\n4 — Юрий Оксана\n5 — Артём Анастасия\n6 — Владислав Ирина\n7 — Георгий Виктория\n8 — Иван Елена\n9 — Константин Ольга\n0 — Лев Светлана</size></line-height>";
                 break;
-            case PaperTypes.SixthDay:
+            case 6:
                 paperTextInHead.text = "<size=0.015><b>День 6. Инструкция</b></size>\n<line-height=0.01><size=0.01>1 — Михаил Наталья\n2 — Николай Татьяна\n3 — Олег Анна\n4 — Павел Марина\n5 — Роман Оксана\n6 — Станислав Валерия\n7 — Тимофей Юлия\n8 — Фёдор Светлана\n9 — Юрий Виктория\n0 — Артём Ирина</size></line-height>";
                 break;
         }

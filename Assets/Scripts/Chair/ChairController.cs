@@ -9,7 +9,7 @@ public class ChairController : MonoBehaviour
     [SerializeField] private Vector3 playerPosition;
     [SerializeField] private Quaternion playerRotation;
 
-    private bool isSiting = false;
+    public bool isSiting = false;
 
     private Controls controls;
 
@@ -53,6 +53,7 @@ public class ChairController : MonoBehaviour
     {
         if (isSiting && !mainGame.isTakedPaper && !mainGame.isTakedPhone)
         {
+            mainGame.StopPhoneSound();
             player.GetUpFromChair();
             isSiting = false;
         }

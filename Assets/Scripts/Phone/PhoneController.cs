@@ -11,6 +11,7 @@ public class PhoneController : MonoBehaviour
     [SerializeField] private GameObject defaultHand;
     [SerializeField] private GameObject handWithPhone;
     [SerializeField] private PhoneSoundController phoneSoundController;
+    [SerializeField] private ChairController chairController;
 
     private Vector3 defaultPosition;
 
@@ -68,9 +69,11 @@ public class PhoneController : MonoBehaviour
             isTaked = true;
             defaultHand.SetActive(false);
             handWithPhone.SetActive(true);
-            if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()))
+            if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()) && chairController.isSiting)
             {
+                StopAllCoroutines();
                 StartCoroutine(phoneSoundController.StartCall());
+                mainGame.isQuestStarted = false;
             }
             HidePhone();
         }
@@ -78,7 +81,7 @@ public class PhoneController : MonoBehaviour
 
     private void DropCall(InputAction.CallbackContext obj)
     {
-        if (isTaked && !mainGame.isTakedPaper && !mainGame.isPhoneCallStarted)
+        if (isTaked && !mainGame.isTakedPaper)
         {
             StartCoroutine(mainGame.SetIsTakedPaperWithDelay(false));
             isTaked = false;
@@ -88,7 +91,25 @@ public class PhoneController : MonoBehaviour
             defaultHand.SetActive(true);
 
             ShowPhone();
+            
+            StopAllCoroutines();
+            StartCoroutine(CheckPhoneCallIsEnd());
         }
+    }
+
+    private IEnumerator CheckPhoneCallIsEnd()
+    {
+        yield return new WaitForSeconds(4F);
+        if (!chairController.isSiting)
+        {
+            yield return null;
+        }
+        if (mainGame.isPhoneCallStarted)
+        {
+            mainGame.PlayPhoneSound();
+            mainGame.isQuestStarted = true;
+        }
+        yield return null;
     }
 
     private void ShowPhone()

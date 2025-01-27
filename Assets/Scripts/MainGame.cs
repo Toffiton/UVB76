@@ -17,6 +17,8 @@ public class MainGame : MonoBehaviour
 
     public bool isDayCompleted = false;
 
+    public bool isQuestStarted = false;
+
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private GameObject informationBlock;
@@ -71,6 +73,11 @@ public class MainGame : MonoBehaviour
 
     private void Start()
     {
+        if (PhonePrefs.GetPhoneCallIsListenById(GetCurrentDay()))
+        {
+            isPhoneCallEnded = true;
+        }
+
         Debug.Log("day" + GetCurrentDay());
         if (GetIsFirstLoadGame() == 1)
         {
@@ -91,7 +98,11 @@ public class MainGame : MonoBehaviour
 
     public void StopPhoneSound()
     {
-        phoneSound.Stop();
+        if (!PhonePrefs.GetPhoneCallIsListenById(GetCurrentDay()))
+        {
+            isQuestStarted = false;
+            phoneSound.Stop();
+        }
     }
 
     private void SwitchTextExecute(InputAction.CallbackContext obj)

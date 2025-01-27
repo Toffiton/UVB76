@@ -18,6 +18,21 @@ public class RadioSignalEmulator : MonoBehaviour
     private Color[] pixels;
     private float speechTimer = 0f; // Таймер для модуляции сигнала
 
+    private void OnEnable()
+    {
+        MainGame.OnDayChanged += HandleDayChanged;
+    }
+
+    private void OnDisable()
+    {
+        MainGame.OnDayChanged -= HandleDayChanged;
+    }
+
+    private void HandleDayChanged(int newDay)
+    {
+        ClearTexture();
+    }
+
     private void Start()
     {
         // Создаем текстуру

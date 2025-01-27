@@ -6,6 +6,10 @@ public class TransceiverSoundController : MonoBehaviour
     [SerializeField] private MainGame mainGame;
     [SerializeField] private TransceiverController transceiverController;
     [Space]
+    [Header("Фон")]
+    [SerializeField] private AudioClip radioBackgroundSound;
+
+    [Space]
     [Header("День 1")]
     [SerializeField] private AudioClip soundFirstDay;
 
@@ -19,9 +23,16 @@ public class TransceiverSoundController : MonoBehaviour
     
     private void Update()
     {
-        if (mainGame.isPhoneCallEnded)
+        if (mainGame.isPhoneCallEnded && !mainGame.isDayCompleted)
         {
             UpdateAudioEffects();
+        }
+        else
+        {
+            if (speechSource.isPlaying)
+            {
+                speechSource.Stop();
+            }
         }
     }
 

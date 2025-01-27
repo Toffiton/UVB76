@@ -120,7 +120,7 @@ public class NumericKeypadController : MonoBehaviour
             {
                 switch (displayText.text)
                 {
-                    case "11111":
+                    case "14892":
                         StartCoroutine(SuccessMessage("Success"));
                         mainGame.isDayCompleted = true;
                         StartCoroutine(ShowInfoText());
