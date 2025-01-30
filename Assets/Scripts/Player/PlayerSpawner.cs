@@ -5,7 +5,8 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform defaultPosition;
-    [SerializeField] private Transform inSleepPosition;
+    [SerializeField] private Transform firstDaySleepPosition;
+    [SerializeField] private Transform secondDaySleepPosition;
 
     public void SpawnPlayerOnStartPosition()
     {
@@ -17,9 +18,14 @@ public class PlayerSpawner : MonoBehaviour
         player.transform.position = defaultPosition.position;
     }
 
-    public void SpawnPlayerOnSleepPosition()
+    public void SpawnPlayerOnFirstDaySleepPosition()
     {
-        player.transform.position = inSleepPosition.position;
+        player.transform.position = firstDaySleepPosition.position;
+    }
+
+    public void SpawnPlayerOnSecondDaySleepPosition()
+    {
+        player.transform.position = secondDaySleepPosition.position;
     }
 
     public void SpawnPlayerToCustomPosition(Vector3 position, Quaternion rotation)

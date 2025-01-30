@@ -164,7 +164,17 @@ public class BedController : MonoBehaviour
         yield return StartCoroutine(SleepCoroutine());
 
         yield return SmoothCameraTransition(bedCamera, playerCamera, initialCameraPosition, initialCameraRotation);
-        playerSpawner.SpawnPlayerOnSleepPosition();
+
+        switch (mainGame.GetCurrentDay())
+        {
+            case 1: 
+                playerSpawner.SpawnPlayerOnFirstDaySleepPosition();
+                break;
+            case 2:
+                playerSpawner.SpawnPlayerOnSecondDaySleepPosition();
+                break;
+        }
+        
 
         yield return new WaitForSeconds(1f);
 

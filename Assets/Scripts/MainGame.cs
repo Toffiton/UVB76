@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MainGame : MonoBehaviour
 {
@@ -21,7 +22,10 @@ public class MainGame : MonoBehaviour
 
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerSpawner playerSpawner;
-    [SerializeField] private GameObject informationBlock;
+    [SerializeField] private GameObject informationTopText;
+    [SerializeField] private GameObject informationHelperText;
+    [SerializeField] private Image fadeImage;
+    [SerializeField] private float fadeDuration = 1.5f;
     [SerializeField] private TextMeshProUGUI informationText;
     [SerializeField] private AudioSource phoneSound;
 
@@ -87,7 +91,9 @@ public class MainGame : MonoBehaviour
         {
             playerSpawner.SpawnPlayerOnDefaultPosition();
             player.ResumeMovementAndLooking();
-            informationBlock.SetActive(false);
+            StartCoroutine(Fade.FadeScreen(fadeImage, fadeDuration,1F, 0F));
+            informationTopText.SetActive(false);
+            informationHelperText.SetActive(false);
         }
     }
 
@@ -131,7 +137,9 @@ public class MainGame : MonoBehaviour
 
                 break;
             case 3:
-                informationBlock.SetActive(false);
+                informationTopText.SetActive(false);
+                informationHelperText.SetActive(false);
+                StartCoroutine(Fade.FadeScreen(fadeImage, fadeDuration,1F, 0F));
                 playerSpawner.SpawnPlayerOnStartPosition();
                 player.ResumeMovementAndLooking();
                 SetIsFirstLoadGameFalse();

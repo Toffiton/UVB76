@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float idleSwingSpeed = 1f;
     [SerializeField] float walkSwingSpeed = 4f;
     [SerializeField] float runSwingSpeed = 8f;
+    [SerializeField] private AudioSource stepsSound;
 
     private Controls _controls;
     private CharacterController _characterController;
@@ -84,6 +85,18 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalMove = _controls.Main.MoveHorizontal.ReadValue<float>();
         float verticalMove = _controls.Main.MoveVerticle.ReadValue<float>();
+
+        if (horizontalMove != 0F || verticalMove != 0F)
+        {
+            if (!stepsSound.isPlaying)
+            {
+                stepsSound.Play();
+            }
+        }
+        else
+        {
+            stepsSound.Stop();
+        }
     
         Vector3 move = transform.right * horizontalMove + transform.forward * verticalMove;
 

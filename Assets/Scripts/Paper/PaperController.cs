@@ -60,14 +60,16 @@ public class PaperController : MonoBehaviour
             HidePaper();
         }
 
+        SetTextInPaper();
+
         if (!isFaxPaper)
         {
             StartCoroutine(ShowPaperWithDelay());
         }
-
-        SetTextInPaper();
-
-        HidePaper();
+        else
+        {
+            HidePaper();
+        }
     }
 
     private void TakePaper(InputAction.CallbackContext obj)
@@ -133,13 +135,14 @@ public class PaperController : MonoBehaviour
         transform.position = defaultPosition;
     }
 
-    public IEnumerator ShowPaperWithDelay()
+    private IEnumerator ShowPaperWithDelay()
     {
+        yield return new WaitForSeconds(0.4F);
+
         if (!mainGame.isPhoneCallEnded)
         {
-            yield return null;
+            yield break;
         }
-        yield return new WaitForSeconds(0.4F);
 
         transform.position = defaultPosition;
 

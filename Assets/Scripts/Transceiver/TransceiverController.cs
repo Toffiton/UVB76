@@ -42,8 +42,8 @@ public class TransceiverController : MonoBehaviour
 
     void Update()
     {
-        HandleButtonPress(1, rightButton);
         HandleButtonPress(-1, leftButton);
+        HandleButtonPress(1, rightButton);
 
         HandleStepButtonPress(-1, leftStepButton, ref leftStepHandled);
         HandleStepButtonPress(1, rightStepButton, ref rightStepHandled);
