@@ -153,6 +153,8 @@ public class MainGame : MonoBehaviour
     public void NotifyAboutNextDay()
     {
         isDayCompleted = false;
+        isPhoneCallStarted = false;
+        isPhoneCallEnded = false;
 
         int currentDay = GetCurrentDay();
         int nextDay = currentDay + 1;

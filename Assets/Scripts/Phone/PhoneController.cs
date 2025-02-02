@@ -72,7 +72,7 @@ public class PhoneController : MonoBehaviour
             if (!PhonePrefs.GetPhoneCallIsListenById(mainGame.GetCurrentDay()) && chairController.isSiting)
             {
                 StopAllCoroutines();
-                StartCoroutine(phoneSoundController.StartCall());
+                phoneSoundController.StartCall();
                 mainGame.isQuestStarted = false;
             }
             HidePhone();

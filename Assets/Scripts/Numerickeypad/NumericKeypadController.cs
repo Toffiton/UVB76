@@ -121,11 +121,19 @@ public class NumericKeypadController : MonoBehaviour
                 switch (displayText.text)
                 {
                     case "14892":
+                        if (mainGame.GetCurrentDay() != 1)
+                        {
+                            return;
+                        }
                         StartCoroutine(SuccessMessage("Success"));
                         mainGame.isDayCompleted = true;
                         StartCoroutine(ShowInfoText());
                         break;
                     case "22222":
+                        if (mainGame.GetCurrentDay() != 2)
+                        {
+                            return;
+                        }
                         StartCoroutine(SuccessMessage("Success"));
                         mainGame.isDayCompleted = true;
                         StartCoroutine(ShowInfoText());

@@ -36,6 +36,7 @@ public class PaperController : MonoBehaviour
         controls.Main.LKM.performed += TakePaper;
         controls.Main.Exit.performed += DropPaper;
         controls.Main.PKM.performed += DropPaper;
+        MainGame.OnDayChanged += HandleDayChanged;
     }
 
     private void OnDisable()
@@ -45,6 +46,15 @@ public class PaperController : MonoBehaviour
         controls.Main.LKM.performed -= TakePaper;
         controls.Main.Exit.performed -= DropPaper;
         controls.Main.PKM.performed -= DropPaper;
+        MainGame.OnDayChanged -= HandleDayChanged;
+    }
+
+    private void HandleDayChanged(int newDay)
+    {
+        if (!isFaxPaper)
+        {
+            HidePaper();
+        }
     }
 
     private void Start()

@@ -20,6 +20,10 @@ public class PhoneSoundController : MonoBehaviour
     [SerializeField] private AudioClip step4;
     [SerializeField] private AudioClip step5;
     [SerializeField] private AudioClip step6;
+    
+    [Space]
+    [Header("День 2")]
+    [SerializeField] private AudioClip step21;
 
     [SerializeField] private AudioSource speechSource;
     
@@ -27,10 +31,23 @@ public class PhoneSoundController : MonoBehaviour
 
     private int currentStep = 0;
 
-    public IEnumerator StartCall()
+    public void StartCall()
+    {
+        switch (mainGame.GetCurrentDay())
+        {
+            case 1:
+                StartCoroutine(StartTutorialCall());
+                break;
+            case 2:
+                StartCoroutine(StartSecondDayCall());
+                break;
+        }
+    }
+
+    private IEnumerator StartTutorialCall()
     {
         mainGame.isPhoneCallStarted = true;
-        //yield return PlayClip(step1);
+        yield return PlayClip(step1);
 
         yield return PlayClip(step2);
 
@@ -56,6 +73,17 @@ public class PhoneSoundController : MonoBehaviour
         yield return PlayClip(step6);
 
         yield return WaitForInputCode(0.6f);
+
+        PhonePrefs.SetPhoneCallIsListenById(mainGame.GetCurrentDay());
+        mainGame.isPhoneCallStarted = false;
+        mainGame.isPhoneCallEnded = true;
+    }
+
+    private IEnumerator StartSecondDayCall()
+    {
+        mainGame.isPhoneCallStarted = true;
+
+        yield return PlayClip(step21);
 
         PhonePrefs.SetPhoneCallIsListenById(mainGame.GetCurrentDay());
         mainGame.isPhoneCallStarted = false;
