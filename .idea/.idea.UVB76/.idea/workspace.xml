@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="38af7080-b535-4f3b-9036-71066fdf3012" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UVB76/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Door/Door.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Door/Door.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SignalVisualizer/RadioSignalEmulator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SignalVisualizer/RadioSignalEmulator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverSoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Transceiver/TransceiverSoundController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Paper/PaperController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +236,7 @@
       <workItem from="1739286991166" duration="610000" />
       <workItem from="1740165173494" duration="653000" />
       <workItem from="1740179148129" duration="3543000" />
-      <workItem from="1740253469991" duration="2204000" />
+      <workItem from="1740253469991" duration="2726000" />
     </task>
     <servers />
   </component>
