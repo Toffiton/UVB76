@@ -10,8 +10,22 @@ public class RadioSignalEmulator : MonoBehaviour
     [SerializeField] private int height = 256;      // Высота текстуры
     [SerializeField] private float noiseLevel = 0.3f; // Уровень шума
     [SerializeField] private float updateInterval = 0.05f; // Скорость обновления
+
+    [Space]
+    [Header("Основной диапозон УВБ")]
     [SerializeField] private int spectrumMinFrequency = 4500; // Минимальная частота спектра
     [SerializeField] private int spectrumMaxFrequency = 4750; // Максимальная частота спектра
+
+    [Space]
+    [Header("Первый переговор радиолюбителей 3000 кгц")]
+    [SerializeField] private int firstSideMinFrequency = 2875; // Минимальная частота спектра
+    [SerializeField] private int firstSideMaxFrequency = 3125; // Максимальная частота спектра
+
+    [Space]
+    [Header("Первый переговор радиолюбителей 5000 кгц")]
+    [SerializeField] private int secondSideMinFrequency = 4875; // Минимальная частота спектра
+    [SerializeField] private int secondSideMaxFrequency = 5125; // Максимальная частота спектра
+
     [SerializeField] private float signalWidth = 10f; // Ширина сигнала в пикселях
 
     private Texture2D signalTexture;
@@ -78,7 +92,22 @@ public class RadioSignalEmulator : MonoBehaviour
             float intensity = Random.Range(0f, noiseLevel); // Шум
 
             // Вычисляем соответствующую частоту для текущей позиции X
-            float mappedFrequency = Mathf.Lerp(spectrumMinFrequency, spectrumMaxFrequency, (float)x / width);
+            float mappedFrequency = 0f;
+            float relativeX = (float)x / width; // Нормализуем X в диапазоне 0-1
+
+            if (frequency >= spectrumMinFrequency && frequency <= spectrumMaxFrequency)
+            {
+                mappedFrequency = Mathf.Lerp(spectrumMinFrequency, spectrumMaxFrequency, relativeX);
+            }
+            else if (frequency >= firstSideMinFrequency && frequency <= firstSideMaxFrequency)
+            {
+                mappedFrequency = Mathf.Lerp(firstSideMinFrequency, firstSideMaxFrequency, relativeX);
+            }
+            else if (frequency >= secondSideMinFrequency && frequency <= secondSideMaxFrequency)
+            {
+                mappedFrequency = Mathf.Lerp(secondSideMinFrequency, secondSideMaxFrequency, relativeX);
+            }
+
 
             // Если частота находится рядом с текущей частотой трансивера, усиливаем сигнал
             float distanceToSignal = Mathf.Abs(mappedFrequency - frequency);

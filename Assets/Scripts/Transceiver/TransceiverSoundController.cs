@@ -1,67 +1,85 @@
 using UnityEngine;
-using System.Collections;
 
 public class TransceiverSoundController : MonoBehaviour
 {
     [SerializeField] private MainGame mainGame;
     [SerializeField] private TransceiverController transceiverController;
-    [Space]
-    [Header("Фон")]
-    [SerializeField] private AudioClip radioBackgroundSound;
 
     [Space]
     [Header("День 1")]
+    [SerializeField] private AudioSource mainSource;
     [SerializeField] private AudioClip soundFirstDay;
+    [SerializeField] private int mainRange = 100;
 
-    [SerializeField] private AudioSource speechSource;
+    [Space]
+    [Header("Побочные переговоры радиолюбителей 3000 кгц")]
+    [SerializeField] private AudioSource firstSideSource;
+    [SerializeField] private AudioClip firstSideAudio;
+    [SerializeField] private int firstSideRange = 100;
+
+    [Space]
+    [Header("Побочные переговоры радиолюбителей 5000 кгц")]
+    [SerializeField] private AudioSource secondSideSource;
+    [SerializeField] private AudioClip secondSideAudio;
+    [SerializeField] private int secondSideRange = 100;
+
+    [Space]
     [SerializeField] private AudioLowPassFilter lowPassFilter;
 
     private void Start()
     {
-        speechSource.clip = soundFirstDay;
+        // Запускаем все треки сразу
+        PlayLoopingAudio(mainSource, soundFirstDay);
+        PlayLoopingAudio(firstSideSource, firstSideAudio);
+        PlayLoopingAudio(secondSideSource, secondSideAudio);
     }
-    
+
     private void Update()
     {
-        if (mainGame.isPhoneCallEnded && !mainGame.isDayCompleted)
+        if (mainGame.isPhoneCallEnded)
         {
-            UpdateAudioEffects();
+            if (!mainGame.isDayCompleted)
+            {
+                AdjustAudioVolume(mainSource, transceiverController.targetFrequency, mainRange);
+            }
+
+            AdjustAudioVolume(firstSideSource, transceiverController.firstSideTargetFrequency, firstSideRange);
+            AdjustAudioVolume(secondSideSource, transceiverController.secondSideTargetFrequency, secondSideRange);
         }
         else
         {
-            if (speechSource.isPlaying)
-            {
-                speechSource.Stop();
-            }
+            // Останавливаем звуки, если звонок не завершён
+            StopAllAudio();
         }
     }
 
-    private void UpdateAudioEffects()
+    private void PlayLoopingAudio(AudioSource source, AudioClip clip)
     {
-        // Расстояние до целевой частоты
-        float distanceToTarget = Mathf.Abs(transceiverController.frequency - transceiverController.targetFrequency);
+        source.clip = clip;
+        source.loop = true; // Делаем бесконечный цикл
+        source.Play();
+        source.volume = 0; // Начинаем с нулевой громкости
+    }
 
-        // Нормализация расстояния для диапазона от 0 до 1
-        float normalizedDistance = Mathf.Clamp01(distanceToTarget / (transceiverController.maxFrequency - transceiverController.minFrequency));
+    private void AdjustAudioVolume(AudioSource source, int targetFrequency, int range)
+    {
+        float distanceToTarget = Mathf.Abs(transceiverController.frequency - targetFrequency);
+        float normalizedDistance = Mathf.Clamp01(distanceToTarget / range);
 
-        // Настройка помех (низкочастотный фильтр для имитации шумов)
-        lowPassFilter.cutoffFrequency = Mathf.Lerp(500, 22000, 1 - normalizedDistance);
-
-        // Если частота в пределах заданного диапазона, воспроизводим речь
-        if (distanceToTarget <= 100) // Задайте диапазон, например ±100 от цели
+        if (distanceToTarget <= range)
         {
-            if (!speechSource.isPlaying)
-            {
-                speechSource.Play(); // Продолжаем воспроизведение, если оно было на паузе
-            }
-            speechSource.volume = Mathf.Lerp(0.5f, 1f, 1 - normalizedDistance); // Увеличиваем громкость речи
+            source.volume = Mathf.Lerp(0.1f, 1f, 1 - normalizedDistance);
         }
         else
         {
-            if (speechSource.isPlaying)
-            {
-                speechSource.Pause(); // Ставим на паузу, если за пределами диапазона
-            }
+            source.volume = 0; // Заглушаем звук, если далеко от частоты
         }
+    }
+
+    private void StopAllAudio()
+    {
+        mainSource.Stop();
+        firstSideSource.Stop();
+        secondSideSource.Stop();
     }
 }

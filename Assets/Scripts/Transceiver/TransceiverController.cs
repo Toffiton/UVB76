@@ -1,9 +1,12 @@
+using System;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class TransceiverController : MonoBehaviour
 {
+    [SerializeField] [CanBeNull] private MainGame mainGame;
     [SerializeField] private TextMeshProUGUI frequencyText;
 
     [SerializeField] private ButtonPressController leftButton;
@@ -15,9 +18,11 @@ public class TransceiverController : MonoBehaviour
     [SerializeField] private int frequencyStep = 125; // Базовый шаг изменения частоты
     [SerializeField] private float initialChangeSpeed = 0.5f; // Начальная скорость изменения частоты
     [SerializeField] private float acceleration = 0.1f; // Ускорение изменения частоты при удержании
-    [SerializeField] public int minFrequency = 3000; // Минимальная частота
-    [SerializeField] public int maxFrequency = 5000; // Максимальная частота
+    [SerializeField] public int minFrequency = 2000; // Минимальная частота
+    [SerializeField] public int maxFrequency = 6000; // Максимальная частота
     [SerializeField] public int targetFrequency = 4625; // Целевая частота
+    [SerializeField] public int firstSideTargetFrequency = 3000; // Целевая частота
+    [SerializeField] public int secondSideTargetFrequency = 5000; // Целевая частота
 
     public int frequency = 4000;
 
@@ -38,6 +43,23 @@ public class TransceiverController : MonoBehaviour
     {
         frequency = 4000;
         UpdateFrequencyText();
+    }
+
+
+    private void Start()
+    {
+        if (mainGame == null)
+        {
+            return;
+        }
+
+        switch (mainGame?.GetCurrentDay())
+        {
+            case 2: frequency = 6000; 
+                break;
+            case 3: frequency = 2000; 
+                break;
+        }
     }
 
     void Update()

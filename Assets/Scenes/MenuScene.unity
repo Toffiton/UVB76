@@ -36217,6 +36217,7 @@ MonoBehaviour:
   step4: {fileID: 8300000, guid: 3bdeaaaf2526464a9bc8f31ad569ffaa, type: 3}
   step5: {fileID: 8300000, guid: 4c135970695b46087abb36dd8e3987b8, type: 3}
   step6: {fileID: 8300000, guid: 2588dc5287140a0888a68d048a6507f0, type: 3}
+  step21: {fileID: 0}
   speechSource: {fileID: 0}
 --- !u!64 &1921997502
 MeshCollider:
@@ -36691,6 +36692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190368f893dc63265963db91ca4cf259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainGame: {fileID: 0}
   frequencyText: {fileID: 663969438}
   leftButton: {fileID: 1400965393}
   rightButton: {fileID: 1641850955}
@@ -36703,6 +36705,8 @@ MonoBehaviour:
   minFrequency: 3000
   maxFrequency: 5000
   targetFrequency: 4625
+  firstSideTargetFrequency: 3000
+  secondSideTargetFrequency: 5000
   frequency: 4000
 --- !u!4 &2023483557
 Transform:

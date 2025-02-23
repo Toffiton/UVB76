@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3143279660893053353
 Transform:
@@ -201,6 +201,9 @@ MonoBehaviour:
   takedItem: {fileID: 1485728267670352360}
   openAngle: -90
   speed: 50
+  sound: {fileID: 0}
+  openDoorSound: {fileID: 0}
+  closeDoorSound: {fileID: 0}
 --- !u!114 &1485728267670352360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +233,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1445603613697317650
 Transform:
