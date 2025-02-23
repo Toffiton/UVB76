@@ -45,7 +45,6 @@ public class TransceiverController : MonoBehaviour
         UpdateFrequencyText();
     }
 
-
     private void Start()
     {
         if (mainGame == null)
