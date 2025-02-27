@@ -89,7 +89,7 @@ public class NumericKeypadController : MonoBehaviour
             yield return new WaitForSeconds(0.5f); // Задержка между изменениями текста
         }
     }
-    
+
     private void HandleAcceptButtonPress(ButtonPressController button, int buttonIndex)
     {
         if (button.isButtonPressed && !buttonHandled[buttonIndex])
