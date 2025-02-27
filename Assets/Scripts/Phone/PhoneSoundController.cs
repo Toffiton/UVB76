@@ -47,9 +47,9 @@ public class PhoneSoundController : MonoBehaviour
     private IEnumerator StartTutorialCall()
     {
         mainGame.isPhoneCallStarted = true;
-        yield return PlayClip(step1);
+        //yield return PlayClip(step1);
 
-        yield return PlayClip(step2);
+        //yield return PlayClip(step2);
 
         // Шаг 3: Ждём, пока частота будет в рамках и удерживается 3 секунд
         yield return WaitForFrequencyInRange(3f);

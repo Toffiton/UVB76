@@ -63,6 +63,21 @@ public class TransceiverSoundController : MonoBehaviour
 
     private void AdjustAudioVolume(AudioSource source, int targetFrequency, int range)
     {
+        if (!mainSource.isPlaying)
+        {
+            mainSource.Play();
+        }
+
+        if (!firstSideSource.isPlaying)
+        {
+            firstSideSource.Play();
+        }
+
+        if (!secondSideSource.isPlaying)
+        {
+            secondSideSource.Play();
+        }
+
         float distanceToTarget = Mathf.Abs(transceiverController.frequency - targetFrequency);
         float normalizedDistance = Mathf.Clamp01(distanceToTarget / range);
 
