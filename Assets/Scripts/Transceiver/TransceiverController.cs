@@ -29,6 +29,8 @@ public class TransceiverController : MonoBehaviour
     private bool leftStepHandled = false;
     private bool rightStepHandled = false;
 
+    private float frequencyBuffer = 0f;
+
     private void OnEnable()
     {
         MainGame.OnDayChanged += HandleDayChanged;
@@ -58,7 +60,10 @@ public class TransceiverController : MonoBehaviour
                 break;
             case 3: frequency = 2000; 
                 break;
+            default: frequency = 4000;
+                break;
         }
+        UpdateFrequencyText();
     }
 
     void Update()
@@ -75,8 +80,17 @@ public class TransceiverController : MonoBehaviour
         if (button.isButtonPressed)
         {
             float changeSpeed = initialChangeSpeed + acceleration * 10;
+            frequencyBuffer += direction * frequencyStep * changeSpeed * Time.deltaTime;
 
-            ChangeFrequency(direction * frequencyStep * changeSpeed * Time.deltaTime);
+            if (Mathf.Abs(frequencyBuffer) >= 1f)
+            {
+                int intDelta = Mathf.RoundToInt(frequencyBuffer);
+                frequency += intDelta;
+                frequency = Mathf.Clamp(frequency, minFrequency, maxFrequency);
+                frequencyBuffer -= intDelta;
+
+                UpdateFrequencyText();
+            }
         }
     }
 
